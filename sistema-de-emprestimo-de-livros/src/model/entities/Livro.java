@@ -1,6 +1,6 @@
 package model.entities;
 
-import java.util.List;
+import model.enums.Estado;
 
 public class Livro {
 	
@@ -17,5 +17,6 @@ public class Livro {
 	private String proprietario;
 	
 	private Estado estado;
+	
 	
 }
