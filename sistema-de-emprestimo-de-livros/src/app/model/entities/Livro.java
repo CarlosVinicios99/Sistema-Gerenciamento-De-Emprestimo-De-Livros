@@ -1,6 +1,6 @@
-package model.entities;
+package app.model.entities;
 
-import model.enums.Estado;
+import app.model.enums.Estado;
 
 public class Livro {
 	

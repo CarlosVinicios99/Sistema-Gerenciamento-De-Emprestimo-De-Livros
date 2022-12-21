@@ -1,4 +1,4 @@
-package model.enums;
+package app.model.enums;
 
 public enum Estado {
 	DISPONIVEL,
