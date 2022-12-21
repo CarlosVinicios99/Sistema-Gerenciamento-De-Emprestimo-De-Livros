@@ -60,5 +60,4 @@ public class Emprestimo {
 	public void setDataFinal(LocalDateTime dataFinal) {
 		this.dataFinal = dataFinal;
 	}
-	
 }
