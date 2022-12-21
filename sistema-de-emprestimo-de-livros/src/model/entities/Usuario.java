@@ -32,6 +32,62 @@ public class Usuario {
 		this.senha = senha;
 	}
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public List<Emprestimo> getEmprestimos() {
+		return emprestimos;
+	}
+
+	public void setEmprestimos(List<Emprestimo> emprestimos) {
+		this.emprestimos = emprestimos;
+	}
+	
 	public boolean adicionarEmprestimo(Emprestimo emprestimo) {
 		if(emprestimos.size() == 3 || emprestimo == null) {
 			return false;
@@ -40,10 +96,14 @@ public class Usuario {
 	}
 	
 	public boolean removerEmprestimo(Emprestimo emprestimo) {
-		return emprestimos.remove(emprestimo);
+		if(emprestimos.contains(emprestimo)) {
+			emprestimos.remove(emprestimo);
+			return true;
+		}
+		return false;
 	}
 	
-	
+
 	@Override
 	public String toString() {
 		return "\nID: " + id + "\nMatricula: " + matricula + "\nNome: " + nome
