@@ -88,10 +88,14 @@ public class Usuario {
 		this.emprestimos = emprestimos;
 	}
 	
-	public boolean adicionarEmprestimo(Emprestimo emprestimo) {
-		if(emprestimos.size() == 3 || emprestimo == null) {
+	public boolean emprestimoPermitido() {
+		if(emprestimos.size() >= 3) {
 			return false;
 		}
+		return true;
+	}
+	
+	public boolean adicionarEmprestimo(Emprestimo emprestimo) {
 		return emprestimos.add(emprestimo);
 	}
 	
