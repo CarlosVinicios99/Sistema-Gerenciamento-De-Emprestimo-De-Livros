@@ -3,6 +3,7 @@ package app;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import app.model.entities.Emprestimo;
 import app.model.entities.Livro;
 import app.model.entities.Usuario;
 import app.model.enums.Estado;
@@ -146,26 +147,81 @@ public class Principal {
 				
 				if(usuarioEmprestimo != null) {
 					if(usuarioEmprestimo.emprestimoPermitido()) {
-						//buscar livro para adicionar ao emprestimo
+						System.out.println("Digite o titulo do livro: ");
+						String titulo = entrada.nextLine();
+						
+						Livro livroEmprestimo = null;
+						
+						for(Livro livro: livros) {
+							if(livro.getTitulo().contains(titulo) && livro.getEstado() == Estado.DISPONIVEL) {
+								livroEmprestimo = livro;
+							}
+						}
+						
+						if(livroEmprestimo != null) {
+							livroEmprestimo.setEstado(Estado.EMPRESTADO);
+							Emprestimo novoEmprestimo = new Emprestimo(livroEmprestimo);
+							usuarioEmprestimo.adicionarEmprestimo(novoEmprestimo);
+						}
+						else {
+							System.out.println("Livro nao encontrado");
+						}
 					}
 					
+					else {
+						System.out.println("Usuario ja possui 3 livros emprestados");
+					}		
 				}
 				
 			}
 			
 			else if(opcao == 8) {
-				//obter o usuario que pegou o livro emprestado
-				//obter o codigo do livro 
-				//percorrer a lista de emprestimos do usuario e remover o livro
+				System.out.println("Digite a matricula do usuario: ");
+				String matricula = entrada.nextLine();
+				Usuario usuarioDevolucao = null;
+				
+				for(Usuario usuario: usuarios) {
+					if(usuario.getMatricula().equals(matricula)) {
+						usuarioDevolucao = usuario;
+					}
+				}
+				
+				if(usuarioDevolucao != null) {
+					System.out.println("Digite o codigo do livro: ");
+					String codigo = entrada.nextLine();
+		
+					Livro livroDevolucao = null;
+						
+					for(Livro livro: livros) {
+						if(livro.getCodigo().equals(codigo)) {
+							livroDevolucao = livro;
+						}
+					}
+					
+					if(livroDevolucao != null) {
+						livroDevolucao.setEstado(Estado.DISPONIVEL);
+						usuarioDevolucao.removerEmprestimo(livroDevolucao);
+					}
+					
+					else {
+						System.out.println("Livro nao encontrado");
+					}
+				}
+				
+				else {
+					System.out.println("Usuario nao encontrado");
+				}
+			}
+			
+			else if(opcao == 9) {
+				System.out.println("Saindo");
 			}
 			
 			else {
-				
+				System.out.println("Opcao invalidade\nTente Novamente");
 			}
 		}
-	
-		
-		
+		entrada.close();
 	}
 	
 }

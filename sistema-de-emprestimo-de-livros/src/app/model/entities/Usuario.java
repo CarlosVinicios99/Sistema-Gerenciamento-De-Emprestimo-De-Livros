@@ -99,12 +99,21 @@ public class Usuario {
 		return emprestimos.add(emprestimo);
 	}
 	
-	public boolean removerEmprestimo(Emprestimo emprestimo) {
-		if(emprestimos.contains(emprestimo)) {
-			emprestimos.remove(emprestimo);
+	public boolean removerEmprestimo(Livro livro) {
+		Emprestimo emprestimoParaRemover = null;
+		
+		for(Emprestimo emprestimo: emprestimos) {
+			if(emprestimo.getLivro().getCodigo().equals(livro.getCodigo())) {
+				emprestimoParaRemover = emprestimo;
+			}
+		}
+		
+		if(emprestimoParaRemover != null) {
+			emprestimos.remove(emprestimoParaRemover);
 			return true;
 		}
-		return false;
+		
+		return false;	
 	}
 	
 
