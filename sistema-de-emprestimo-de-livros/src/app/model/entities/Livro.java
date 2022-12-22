@@ -1,6 +1,5 @@
 package app.model.entities;
 
-import app.model.enums.Estado;
 
 public class Livro {
 	
@@ -16,7 +15,7 @@ public class Livro {
 		
 	private String proprietario;
 	
-	private Estado estado;
+	private boolean disponibilidade;
 	
 	public Livro() {
 		
@@ -30,13 +29,13 @@ public class Livro {
 		this.proprietario = proprietario;
 	}
 	
-	public Livro(String codigo, String titulo, String descricao, String autor, String proprietario, Estado estado) {
+	public Livro(String codigo, String titulo, String descricao, String autor, String proprietario, boolean disponibilidade) {
 		this.codigo = codigo;
 		this.titulo = titulo;
 		this.descricao = descricao;
 		this.autor = autor;
 		this.proprietario = proprietario;
-		this.estado = estado;
+		this.disponibilidade = disponibilidade;
 	}
 
 	public int getId() {
@@ -87,14 +86,17 @@ public class Livro {
 		this.proprietario = proprietario;
 	}
 
-	public Estado getEstado() {
-		return estado;
+	public boolean getDisponibilidade() {
+		return disponibilidade;
 	}
 
-	public void setEstado(Estado estado) {
-		this.estado = estado;
+	public void setDisponibilidade(boolean disponibilidade) {
+		this.disponibilidade = disponibilidade;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "Livro: " + titulo + "\nDisponibilidade: " + disponibilidade;
+	}
 	
 }

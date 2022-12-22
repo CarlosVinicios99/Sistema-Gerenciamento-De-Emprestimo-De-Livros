@@ -6,7 +6,6 @@ import java.util.Scanner;
 import app.model.entities.Emprestimo;
 import app.model.entities.Livro;
 import app.model.entities.Usuario;
-import app.model.enums.Estado;
 
 public class Principal {
 	
@@ -18,10 +17,11 @@ public class Principal {
 
 		int opcao = 0;
 		
-		while(opcao != 9) {
+		while(opcao != 11) {
 			System.out.println("(1)Cadastrar Livro\n(2)Remover Livro\n(3)Buscar Livro");
 			System.out.println("(4)Cadastrar Usuario\n(5)Remover Usuario\n(6)Buscar Usuario");
-			System.out.println("(7)Emprestimo de Livro\n(8)Devolucao De Livro\n(9)Sair");
+			System.out.println("(7)Emprestimo de Livro\n(8)Devolucao De Livro\n(9)Listar Usuarios");
+			System.out.println("(10)Listar livros\n(11)Sair");
 			opcao = Integer.parseInt(entrada.nextLine());
 			
 			if(opcao == 1) {
@@ -41,7 +41,7 @@ public class Principal {
 				String proprietario = entrada.nextLine();
 				
 				Livro livro = 
-					new Livro(codigo, titulo, descricao, autor, proprietario, Estado.DISPONIVEL);
+					new Livro(codigo, titulo, descricao, autor, proprietario, true);
 				
 				livros.add(livro);
 			}
@@ -83,16 +83,16 @@ public class Principal {
 				System.out.print("Digite a matricula: ");
 				String matricula = entrada.nextLine();
 				
-				System.out.print("Digite o titulo: ");
+				System.out.print("Digite o nome: ");
 				String nome = entrada.nextLine();
 				
-				System.out.print("Digite a descricao: ");
+				System.out.print("Digite o cpf: ");
 				String cpf = entrada.nextLine();
 				
-				System.out.print("Digite o autor: ");
+				System.out.print("Digite o email: ");
 				String email = entrada.nextLine();
 				
-				System.out.println("Digite o proprietario: ");
+				System.out.println("Digite a senha: ");
 				String senha = entrada.nextLine();
 				
 				Usuario usuario 
@@ -127,7 +127,7 @@ public class Principal {
 				}
 				
 				if(usuarioBuscado == null) {
-					System.out.println("Livro nao encontrado");
+					System.out.println("Usuario nao encontrado");
 				}
 				else {
 					System.out.println(usuarioBuscado);
@@ -153,13 +153,13 @@ public class Principal {
 						Livro livroEmprestimo = null;
 						
 						for(Livro livro: livros) {
-							if(livro.getTitulo().contains(titulo) && livro.getEstado() == Estado.DISPONIVEL) {
+							if(livro.getTitulo().contains(titulo) && livro.getDisponibilidade()) {
 								livroEmprestimo = livro;
 							}
 						}
 						
 						if(livroEmprestimo != null) {
-							livroEmprestimo.setEstado(Estado.EMPRESTADO);
+							livroEmprestimo.setDisponibilidade(false);
 							Emprestimo novoEmprestimo = new Emprestimo(livroEmprestimo);
 							usuarioEmprestimo.adicionarEmprestimo(novoEmprestimo);
 						}
@@ -199,7 +199,7 @@ public class Principal {
 					}
 					
 					if(livroDevolucao != null) {
-						livroDevolucao.setEstado(Estado.DISPONIVEL);
+						livroDevolucao.setDisponibilidade(true);
 						usuarioDevolucao.removerEmprestimo(livroDevolucao);
 					}
 					
@@ -214,12 +214,26 @@ public class Principal {
 			}
 			
 			else if(opcao == 9) {
+				for(Usuario usuario: usuarios) {
+					System.out.println(usuario);
+				}
+			}
+			
+			else if(opcao == 10) {	
+				for(Livro livro: livros) {
+					System.out.println(livro);
+				}
+			}
+			
+			else if(opcao == 11) {
 				System.out.println("Saindo");
 			}
 			
 			else {
 				System.out.println("Opcao invalidade\nTente Novamente");
 			}
+			
+			System.out.println("\n");
 		}
 		entrada.close();
 	}

@@ -60,4 +60,10 @@ public class Emprestimo {
 	public void setDataFinal(LocalDateTime dataFinal) {
 		this.dataFinal = dataFinal;
 	}
+	
+	@Override
+	public String toString() {
+		return "Livro: " + livro.toString() + "\nData inicio: " + dataInicial.toString()
+		+ "\nData final: " + dataFinal.toString();
+	}
 }

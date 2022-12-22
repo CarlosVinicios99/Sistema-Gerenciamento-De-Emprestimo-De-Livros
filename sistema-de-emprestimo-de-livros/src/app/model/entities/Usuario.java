@@ -119,8 +119,15 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "\nID: " + id + "\nMatricula: " + matricula + "\nNome: " + nome
-			+ "\nCPF: " + cpf + "\nE-mail: " + email + "\nSenha: " + senha;
+		String retorno = "\nID: " + id + "\nMatricula: " + matricula + "\nNome: " + nome
+			+ "\nCPF: " + cpf + "\nE-mail: " + email + "\nSenha: " + senha + "\nEmprestimos: \n";
+		
+		
+		for(Emprestimo emprestimo: emprestimos) {
+			retorno = retorno.concat(emprestimo.toString() + "\n");
+		}
+		
+		return retorno;
 	}
 	
 }
