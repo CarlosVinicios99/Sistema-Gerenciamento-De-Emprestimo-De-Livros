@@ -4,11 +4,11 @@ public class Bibliotecario {
 	
 	private int id;
 	
+	private String nome;
+	
 	private String senha;
 	
 	private String email;
-	
-	private String nome;
 	
 	private String cpf;
 	
