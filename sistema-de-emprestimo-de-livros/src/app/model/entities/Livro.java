@@ -96,7 +96,7 @@ public class Livro {
 	
 	@Override
 	public String toString() {
-		return "Livro: " + titulo + "\nDisponibilidade: " + disponibilidade;
+		return "Livro: " + titulo + "\nDisponibilidade: ";
 	}
 	
 }

@@ -14,7 +14,7 @@ public class Principal {
 		ArrayList<Usuario> usuarios = new ArrayList<>();
 		ArrayList<Livro> livros = new ArrayList<>();
 		Scanner entrada = new Scanner(System.in);
-
+	
 		int opcao = 0;
 		
 		while(opcao != 11) {
