@@ -1,0 +1,8 @@
+CREATE TABLE bibliotecarios (
+	id INT AUTO_INCREMENT,
+    nome VARCHAR(60) NOT NULL,
+    senha VARCHAR(20) NOT NULL,
+    email VARCHAR(40) NOT NULL,
+    cpf VARCHAR(20) NOT NULL,
+    PRIMARY KEY(id)
+);
