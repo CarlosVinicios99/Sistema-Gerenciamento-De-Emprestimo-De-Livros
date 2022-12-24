@@ -3,14 +3,16 @@ package app;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import app.model.entities.Bibliotecario;
 import app.model.entities.Emprestimo;
 import app.model.entities.Livro;
 import app.model.entities.Usuario;
+import app.repositories.DAO;
 
 public class Principal {
 	
 	public static void main(String[] args) {
-		
+	
 		ArrayList<Usuario> usuarios = new ArrayList<>();
 		ArrayList<Livro> livros = new ArrayList<>();
 		Scanner entrada = new Scanner(System.in);
