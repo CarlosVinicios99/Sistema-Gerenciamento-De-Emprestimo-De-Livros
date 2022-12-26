@@ -1,5 +1,6 @@
 package app.model.entities;
 
+import java.sql.Date;
 import java.time.LocalDateTime;
 
 public class Emprestimo {
@@ -8,9 +9,9 @@ public class Emprestimo {
 	
 	private Livro livro;
 	
-	private LocalDateTime dataInicial;
+	private Date dataInicial;
 	
-	private LocalDateTime dataFinal;
+	private Date dataFinal;
 	
 	
 	public Emprestimo() {
@@ -19,17 +20,17 @@ public class Emprestimo {
 	
 	public Emprestimo(Livro livro) {
 		this.livro = livro;
-		this.dataInicial = LocalDateTime.now();
-		this.dataFinal = LocalDateTime.now().plusDays(7);
+		this.dataInicial = Date.valueOf(LocalDateTime.now().toString());
+		this.dataFinal = Date.valueOf(LocalDateTime.now().plusDays(7).toString());
 	}
 	
-	public Emprestimo(Livro livro, LocalDateTime dataInicial, LocalDateTime dataFinal) {
+	public Emprestimo(Livro livro, Date dataInicial, Date dataFinal) {
 		this.livro = livro;
 		this.dataInicial = dataInicial;
 		this.dataFinal = dataFinal;
 	}
 	
-	public Emprestimo(int id, Livro livro, LocalDateTime dataInicial, LocalDateTime dataFinal) {
+	public Emprestimo(int id, Livro livro, Date dataInicial, Date dataFinal) {
 		this.id = id;
 		this.livro = livro;
 		this.dataInicial = dataInicial;
@@ -52,19 +53,19 @@ public class Emprestimo {
 		this.livro = livro;
 	}
 
-	public LocalDateTime getDataInicial() {
+	public Date getDataInicial() {
 		return dataInicial;
 	}
 
-	public void setDataInicial(LocalDateTime dataInicial) {
+	public void setDataInicial(Date dataInicial) {
 		this.dataInicial = dataInicial;
 	}
 
-	public LocalDateTime getDataFinal() {
+	public Date getDataFinal() {
 		return dataFinal;
 	}
 
-	public void setDataFinal(LocalDateTime dataFinal) {
+	public void setDataFinal(Date dataFinal) {
 		this.dataFinal = dataFinal;
 	}
 	

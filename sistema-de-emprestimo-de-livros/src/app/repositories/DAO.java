@@ -101,12 +101,13 @@ public class DAO {
 			System.out.println(e.getMessage());
 		}
 		
-		//consultar o emprestimo inserido e obter seu id, inserir na tabela usuario_emprestimo passando
-		//o id do usuario e o id do emprestimo
-		//inserirUsuarioEmprestimo(idUsuario, emprestimoConsulta.getId())
+		Emprestimo emprestimoConsulta = 
+			consultarEmprestimo(emprestimo.getDataInicial(), emprestimo.getDataFinal());
+
+		inserirUsuarioEmprestimo(idUsuario, emprestimoConsulta.getId());
 	}
 	
-	private void inserirUsuarioEmprestimo(int idUsuario, int idEmprestimo) {
+	private static void inserirUsuarioEmprestimo(int idUsuario, int idEmprestimo) {
 		String SQL =
 			"""
 				INSERT INTO usuario_emprestimo (id_usuario, id_emprestimo) 
@@ -182,7 +183,7 @@ public class DAO {
 			}
 	}
 	
-	private static Emprestimo consultarEmprestimo(LocalDateTime dataInicial, LocalDateTime dataFinal) {
+	private static Emprestimo consultarEmprestimo(Date dataInicial, Date dataFinal) {
 		String SQL =
 				"""
 					SELECT * FROM emprestimos WHERE data_inicial = ? AND data_final = ?;
@@ -201,9 +202,8 @@ public class DAO {
 						Date dataFinalConsulta = resultadoConsulta.getDate("data_final");
 						int idLivro = resultadoConsulta.getInt("id_livro");
 						Livro livro = consultarLivroPorId(idLivro);
-						//return new Emprestimo(idEmprestimo, livro, dataInicialConsulta, dataFinalConsulta);
-						//modificar os campos de emprestimo para receber Date
-;					} 
+						return new Emprestimo(idEmprestimo, livro, dataInicialConsulta, dataFinalConsulta);
+					} 
 				}
 				
 				return null;
@@ -215,8 +215,11 @@ public class DAO {
 			}
 	}
 	
-	//public static Livro consultarLivroPorTitulo
 	//public static Usuario consultarUsuario() com seus respectivos emprestimos
+	
+	//metodos de consulta de livros;
+	//atualizar disponibilidade de livro
+	//public static Livro consultarLivroPorTitulo
 	
 	
 	//metodos de exclusao
