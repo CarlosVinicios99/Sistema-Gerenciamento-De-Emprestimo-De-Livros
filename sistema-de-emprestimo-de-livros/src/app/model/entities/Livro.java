@@ -37,6 +37,16 @@ public class Livro {
 		this.proprietario = proprietario;
 		this.disponibilidade = disponibilidade;
 	}
+	
+	public Livro(int id, String codigo, String titulo, String descricao, String autor, String proprietario, boolean disponibilidade) {
+		this.id = id;
+		this.codigo = codigo;
+		this.titulo = titulo;
+		this.descricao = descricao;
+		this.autor = autor;
+		this.proprietario = proprietario;
+		this.disponibilidade = disponibilidade;
+	}
 
 	public int getId() {
 		return id;

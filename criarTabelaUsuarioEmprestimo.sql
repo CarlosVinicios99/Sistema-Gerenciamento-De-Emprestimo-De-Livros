@@ -5,6 +5,5 @@ CREATE TABLE usuario_emprestimo(
     PRIMARY KEY(id),
     FOREIGN KEY(id_usuario) REFERENCES usuarios(id),
     FOREIGN KEY(id_emprestimo) REFERENCES emprestimos(id),
-    UNIQUE KEY(id_usuario),
     UNIQUE KEY(id_emprestimo)
 );

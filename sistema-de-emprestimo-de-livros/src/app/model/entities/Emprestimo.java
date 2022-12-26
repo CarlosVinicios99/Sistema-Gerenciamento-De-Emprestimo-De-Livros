@@ -28,6 +28,13 @@ public class Emprestimo {
 		this.dataInicial = dataInicial;
 		this.dataFinal = dataFinal;
 	}
+	
+	public Emprestimo(int id, Livro livro, LocalDateTime dataInicial, LocalDateTime dataFinal) {
+		this.id = id;
+		this.livro = livro;
+		this.dataInicial = dataInicial;
+		this.dataFinal = dataFinal;
+	}
 
 	public int getId() {
 		return id;
