@@ -20,10 +20,12 @@ public class DAO {
 		
 	}
 	
+	//TESTADO
 	public static void iniciarConexao() {
 		conexao = FabricaConexao.getConexao();
 	}
 	
+	//TESTADO
 	public static void fecharConexao() {
 		try {
 			if(!conexao.isClosed()) {
@@ -35,8 +37,9 @@ public class DAO {
 		}
 	}
 	
-	//metodos de insercao
+	//metodos de insercao-----------------------------------------------------------------------------------------
 	
+	//TESTADO
 	public static void inserirUsuario(Usuario usuario) {
 		String SQL = 
 			""" 
@@ -57,8 +60,7 @@ public class DAO {
 			}
 	}
 	
-	
-	//Metodos de insercao-----------------------------------------------------------------------------------------
+	//TESTADO
 	public static void inserirLivro(Livro livro) {
 		String SQL =
 			"""
@@ -82,7 +84,7 @@ public class DAO {
 		}
 			
 	}
-	
+	//TESTADO
 	public static void inserirEmprestimo(Emprestimo emprestimo, int idUsuario) {
 		String SQL = 
 			"""
@@ -104,11 +106,12 @@ public class DAO {
 		}
 		
 		Emprestimo emprestimoConsulta = 
-			consultarEmprestimo(emprestimo.getDataInicial(), emprestimo.getDataFinal());
+			consultarEmprestimo(emprestimo.getLivro());
 
 		inserirUsuarioEmprestimo(idUsuario, emprestimoConsulta.getId());
 	}
 	
+	//TESTADO
 	private static void inserirUsuarioEmprestimo(int idUsuario, int idEmprestimo) {
 		String SQL =
 			"""
@@ -131,6 +134,7 @@ public class DAO {
 
 //Metodos de Consulta -----------------------------------------------------------------------------------------
 	
+	//testado
 	public static boolean bibliotecarioExiste(String cpf, String senha) {
 		String SQL =
 			"""
@@ -155,6 +159,7 @@ public class DAO {
 		}
 	}
 	
+	//TESTADO
 	private static Livro consultarLivroPorId(int id) {
 		String SQL =
 				"""
@@ -187,16 +192,15 @@ public class DAO {
 			}
 	}
 	
-	private static Emprestimo consultarEmprestimo(Date dataInicial, Date dataFinal) {
+	private static Emprestimo consultarEmprestimo(Livro livroConsulta) {
 		String SQL =
 				"""
-					SELECT * FROM emprestimos WHERE data_inicial = ? AND data_final = ?;
+					SELECT * FROM emprestimos WHERE id_livro = ?;
 				""";
 			
 			try {
 				preparedStatement = conexao.prepareStatement(SQL);
-				preparedStatement.setDate(1, Date.valueOf(dataInicial.toString()));
-				preparedStatement.setDate(2, Date.valueOf(dataFinal.toString()));
+				preparedStatement.setInt(1, livroConsulta.getId());
 				ResultSet resultadoConsulta = preparedStatement.executeQuery();
 				
 				if(resultadoConsulta != null) {
@@ -219,6 +223,7 @@ public class DAO {
 			}
 	}
 	
+	//TESTADO
 	public static Usuario consultarUsuario(String cpfConsulta, String senhaConsulta) {
 		String SQL = 
 			"""
@@ -248,6 +253,7 @@ public class DAO {
 					usuarioConsulta.setEmail(email);
 					usuarioConsulta.setSenha(senha);
 					usuarioConsulta.setEmprestimos(consultarEmprestimosDeUsuarios(idUsuario));
+					return usuarioConsulta;
 				}
 			}
 			
@@ -259,6 +265,7 @@ public class DAO {
 			return null;
 		}
 	}
+	
 	
 	private static ArrayList<Emprestimo> consultarEmprestimosDeUsuarios(int idUsuario){
 		ArrayList<Emprestimo> emprestimos = new ArrayList<>();
@@ -291,7 +298,7 @@ public class DAO {
 		}
 	}
 	
-	
+	//TESTADO
 	public static Livro consultarLivroPorTitulo(String tituloConsulta) {
 		String SQL =
 				"""
@@ -324,6 +331,7 @@ public class DAO {
 			}
 	}
 	
+	//TESTADO
 	private static void atualizarDisponibilidadeDeLivro(Livro livro) {
 		livro.alterarDisponibilidade();
 		String SQL = 

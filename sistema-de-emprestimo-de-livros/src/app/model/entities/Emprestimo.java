@@ -1,7 +1,7 @@
 package app.model.entities;
 
 import java.sql.Date;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class Emprestimo {
 	
@@ -20,8 +20,8 @@ public class Emprestimo {
 	
 	public Emprestimo(Livro livro) {
 		this.livro = livro;
-		this.dataInicial = Date.valueOf(LocalDateTime.now().toString());
-		this.dataFinal = Date.valueOf(LocalDateTime.now().plusDays(7).toString());
+		this.dataInicial = Date.valueOf(LocalDate.now());
+		this.dataFinal = Date.valueOf(LocalDate.now().plusDays(7L));
 	}
 	
 	public Emprestimo(Livro livro, Date dataInicial, Date dataFinal) {
@@ -71,7 +71,7 @@ public class Emprestimo {
 	
 	@Override
 	public String toString() {
-		return "Livro: " + livro.toString() + "\nData inicio: " + dataInicial.toString()
+		return livro.toString() + "\nData inicio: " + dataInicial.toString()
 		+ "\nData final: " + dataFinal.toString();
 	}
 }
