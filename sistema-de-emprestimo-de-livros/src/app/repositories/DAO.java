@@ -5,9 +5,8 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
+import java.util.ArrayList;
 
-import app.model.entities.Bibliotecario;
 import app.model.entities.Emprestimo;
 import app.model.entities.Livro;
 import app.model.entities.Usuario;
@@ -58,6 +57,8 @@ public class DAO {
 			}
 	}
 	
+	
+	//Metodos de insercao-----------------------------------------------------------------------------------------
 	public static void inserirLivro(Livro livro) {
 		String SQL =
 			"""
@@ -126,6 +127,8 @@ public class DAO {
 		}
 		
 	}
+
+//Metodos de Consulta -----------------------------------------------------------------------------------------
 	
 	public static boolean bibliotecarioExiste(String cpf, String senha) {
 		String SQL =
@@ -215,13 +218,112 @@ public class DAO {
 			}
 	}
 	
-	//public static Usuario consultarUsuario() com seus respectivos emprestimos
+	public static Usuario consultarUsuario(String cpfConsulta, String senhaConsulta) {
+		String SQL = 
+			"""
+				SELECT * FROM usuarios WHERE cpf = ? AND senha = ?;
+			""";
+		
+		try {
+			preparedStatement = conexao.prepareStatement(SQL);
+			preparedStatement.setString(1, cpfConsulta);
+			preparedStatement.setString(2, senhaConsulta);
+			ResultSet resultadoConsulta = preparedStatement.executeQuery();
+			
+			Usuario usuarioConsulta = new Usuario();
+			if(resultadoConsulta != null) {
+				while(resultadoConsulta.next()) {
+					int idUsuario = resultadoConsulta.getInt("id");
+					String matricula = resultadoConsulta.getString("matricula");
+					String nome = resultadoConsulta.getString("nome");
+					String cpf = resultadoConsulta.getString("cpf");
+					String email = resultadoConsulta.getString("email");
+					String senha = resultadoConsulta.getString("senha");
+					
+					usuarioConsulta.setId(idUsuario);
+					usuarioConsulta.setMatricula(matricula);
+					usuarioConsulta.setNome(nome);
+					usuarioConsulta.setCpf(cpf);
+					usuarioConsulta.setEmail(email);
+					usuarioConsulta.setSenha(senha);
+					usuarioConsulta.setEmprestimos(consultarEmprestimosDeUsuarios(idUsuario));
+				}
+			}
+			
+			return null;
+		}
+		
+		catch(SQLException e) {
+			System.out.println(e.getMessage());
+			return null;
+		}
+	}
 	
-	//metodos de consulta de livros;
+	private static ArrayList<Emprestimo> consultarEmprestimosDeUsuarios(int idUsuario){
+		ArrayList<Emprestimo> emprestimos = new ArrayList<>();
+		String SQL = 
+			"""
+				SELECT * FROM emprestimos WHERE id IN 
+					(SELECT id_emprestimo FROM usuario_emprestimo WHERE id_usuario = ?);
+			""";
+		try {
+			preparedStatement = conexao.prepareStatement(SQL);
+			preparedStatement.setInt(1, idUsuario);
+			ResultSet resultadoConsulta = preparedStatement.executeQuery();
+			
+			if(resultadoConsulta != null) {
+				while(resultadoConsulta.next()) {
+					int idEmprestimo = resultadoConsulta.getInt("id");
+					Date dataInicial = resultadoConsulta.getDate("data_inicial");
+					Date dataFinal = resultadoConsulta.getDate("data_final");
+					int idLivro = resultadoConsulta.getInt("id_livro");
+					Livro livro = consultarLivroPorId(idLivro);
+					emprestimos.add(new Emprestimo(idEmprestimo, livro, dataInicial, dataFinal));
+				}
+				return emprestimos;
+			}
+			return null;
+		}
+		catch(SQLException e) {
+			System.out.println(e.getMessage());
+			return null;
+		}
+	}
+	
+	
+	public static Livro consultarLivroPorTitulo(String tituloConsulta) {
+		String SQL =
+				"""
+					SELECT * FROM livros WHERE titulo = ?;
+				""";
+			
+			try {
+				preparedStatement = conexao.prepareStatement(SQL);
+				preparedStatement.setString(1, tituloConsulta);
+				ResultSet resultadoConsulta = preparedStatement.executeQuery();
+				
+				if(resultadoConsulta != null) {
+					while(resultadoConsulta.next()) {
+						int idLivro = resultadoConsulta.getInt("id");
+						String codigo = resultadoConsulta.getString("codigo");
+						String titulo = resultadoConsulta.getString("titulo");
+						String descricao = resultadoConsulta.getString("descricao");
+						String autor = resultadoConsulta.getString("autor");
+						String proprietario = resultadoConsulta.getString("proprietario");
+						boolean disponibilidade = resultadoConsulta.getBoolean("disponibilidade");
+						return new Livro(idLivro, codigo, titulo, descricao, autor, proprietario, disponibilidade);
+					} 
+				}
+				return null;
+				
+			}
+			catch(SQLException e) {
+				System.out.println(e.getMessage());
+				return null;
+			}
+	}
+	
 	//atualizar disponibilidade de livro
-	//public static Livro consultarLivroPorTitulo
-	
-	
 	//metodos de exclusao
 	
 }
