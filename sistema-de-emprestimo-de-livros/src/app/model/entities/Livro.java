@@ -104,6 +104,15 @@ public class Livro {
 		this.disponibilidade = disponibilidade;
 	}
 	
+	public void alterarDisponibilidade() {
+		if(disponibilidade) {
+			disponibilidade = false;
+		}
+		else {
+			disponibilidade = true;
+		}
+	}
+	
 	@Override
 	public String toString() {
 		return "Livro: " + titulo + "\nDisponibilidade: ";

@@ -96,6 +96,7 @@ public class DAO {
 			preparedStatement.setDate(2, Date.valueOf(emprestimo.getDataFinal().toString()));
 			preparedStatement.setInt(3, emprestimo.getLivro().getId());
 			preparedStatement.execute();
+			atualizarDisponibilidadeDeLivro(emprestimo.getLivro());
 		}
 		
 		catch(SQLException e) {
@@ -323,7 +324,25 @@ public class DAO {
 			}
 	}
 	
-	//atualizar disponibilidade de livro
+	private static void atualizarDisponibilidadeDeLivro(Livro livro) {
+		livro.alterarDisponibilidade();
+		String SQL = 
+			"""
+				UPDATE livros SET disponibilidade = ? WHERE id = ?;
+			""";
+		
+		try {
+			preparedStatement = conexao.prepareStatement(SQL);
+			preparedStatement.setBoolean(1, livro.getDisponibilidade());
+			preparedStatement.setInt(2, livro.getId());
+			preparedStatement.execute();
+		}
+		catch(SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
+	
 	//metodos de exclusao
 	
 }
