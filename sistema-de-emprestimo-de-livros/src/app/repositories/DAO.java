@@ -134,7 +134,7 @@ public class DAO {
 
 //Metodos de Consulta -----------------------------------------------------------------------------------------
 	
-	//testado
+	//TESTADO
 	public static boolean bibliotecarioExiste(String cpf, String senha) {
 		String SQL =
 			"""
@@ -192,6 +192,7 @@ public class DAO {
 			}
 	}
 	
+	//TESTADO
 	private static Emprestimo consultarEmprestimo(Livro livroConsulta) {
 		String SQL =
 				"""
@@ -266,7 +267,7 @@ public class DAO {
 		}
 	}
 	
-	
+	//TESTADO
 	private static ArrayList<Emprestimo> consultarEmprestimosDeUsuarios(int idUsuario){
 		ArrayList<Emprestimo> emprestimos = new ArrayList<>();
 		String SQL = 
@@ -351,6 +352,82 @@ public class DAO {
 		
 	}
 	
-	//metodos de exclusao
+	//Metodos de exclusao------------------------------------------------------------------------------------------
+	
+	public static void excluirUsuario(Usuario usuario) {
+		if(usuario.getEmprestimos().isEmpty()) {
+			String SQL =
+				"""
+					DELETE FROM usuarios WHERE id = ?
+				""";
+			
+			try {
+				preparedStatement = conexao.prepareStatement(SQL);
+				preparedStatement.setInt(1, usuario.getId());
+				preparedStatement.execute();
+			}
+			catch(SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+	}
+	
+	public static void excluirEmprestimo(int idUsuario, Livro livro) {
+		atualizarDisponibilidadeDeLivro(livro);
+		Emprestimo emprestimo = consultarEmprestimo(livro);
+		excluirEmprestimoDeUsuario(emprestimo.getId(), idUsuario);
+		
+		String SQL = 
+			"""
+				DELETE FROM emprestimos WHERE id = ?;	
+			""";
+		
+		try {
+			preparedStatement = conexao.prepareStatement(SQL);
+			preparedStatement.setInt(1, emprestimo.getId());
+			preparedStatement.execute();
+		}
+		catch(SQLException e) {
+			System.out.println(e.getMessage());
+		}
+	}	
+	
+	private static void excluirEmprestimoDeUsuario(int idEmprestimo, int idUsuario) {
+		String SQL = 
+			"""
+				DELETE FROM usuario_emprestimo WHERE id_emprestimo = ? AND id_usuario = ?;
+			""";
+		
+		try {
+			preparedStatement = conexao.prepareStatement(SQL);
+			preparedStatement.setInt(1, idEmprestimo);
+			preparedStatement.setInt(2, idUsuario);
+			preparedStatement.execute();
+		}
+		catch(SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
+	
+	public static void excluirLivro(Livro livro) {
+		if(livro.getDisponibilidade()) {
+			
+			String SQL = 
+				"""
+					DELETE FROM livros WHERE id = ?;
+				""";
+			
+			try {
+				preparedStatement = conexao.prepareStatement(SQL);
+				preparedStatement.setInt(1, livro.getId());
+				preparedStatement.execute();
+			}
+	
+			catch(SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+	}
 	
 }

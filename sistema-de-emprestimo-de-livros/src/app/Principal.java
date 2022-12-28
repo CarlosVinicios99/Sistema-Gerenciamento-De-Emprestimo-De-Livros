@@ -1,10 +1,5 @@
 package app;
 
-import app.model.entities.Emprestimo;
-import app.model.entities.Livro;
-import app.model.entities.Usuario;
-import app.repositories.DAO;
-
 public class Principal {
 	
 	public static void main(String[] args) {
