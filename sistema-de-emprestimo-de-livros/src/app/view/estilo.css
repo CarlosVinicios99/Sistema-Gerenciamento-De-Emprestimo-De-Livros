@@ -1,0 +1,10 @@
+.telaInicial{
+	-fx-background-color: #4258d7;
+}
+
+.tituloPrincipal{
+	-fx-text-fill: white;
+	-fx-font-size: 40px;
+	-fx-text-align: center;
+	-fx-padding: 10px;
+}
