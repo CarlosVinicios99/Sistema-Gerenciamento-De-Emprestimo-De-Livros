@@ -1,4 +1,5 @@
 module emprestimos {
-	opens app;
 	requires java.sql;
+	requires javafx.controls;
+	opens app;
 }
