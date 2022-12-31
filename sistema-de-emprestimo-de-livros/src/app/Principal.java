@@ -1,5 +1,6 @@
 package app;
 
+import app.view.TelaInicial;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -8,7 +9,7 @@ public class Principal extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
-		primaryStage.show();
+		new TelaInicial(primaryStage);
 		
 	}
 	
