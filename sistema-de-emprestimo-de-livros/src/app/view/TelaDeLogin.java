@@ -1,6 +1,7 @@
 package app.view;
 
 
+import app.repositories.DAO;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -10,14 +11,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
+import javafx.stage.Stage;
 
 public class TelaDeLogin {
 	
 	static private GridPane gridPaneLogin;
 	static private Scene cenaLogin;
-	static private Label labelEmail;
+	static private Label labelCpf;
 	static private Label labelSenha;
-	static private TextField campoEmail;
+	static private TextField campoCpf;
 	static private PasswordField campoSenha;
 	static private Button botaoEntrar;
 	
@@ -28,39 +30,54 @@ public class TelaDeLogin {
 	private static void configurarElementosVisuais() {
 		gridPaneLogin = new GridPane();
 		criarGrid();
+		gridPaneLogin.getStyleClass().add("telaLogin");
 		
-		labelEmail = new Label("E-mail: ");
-		labelEmail.setMaxSize(70, 25);
-		labelEmail.setAlignment(Pos.BASELINE_RIGHT);
+		labelCpf = new Label("CPF: ");
+		labelCpf.setMaxSize(70, 25);
+		labelCpf.setAlignment(Pos.BASELINE_RIGHT);
 		labelSenha = new Label("Senha: ");
 		labelSenha.setMaxSize(70, 25);
 		labelSenha.setAlignment(Pos.BASELINE_RIGHT);
 		
-		campoEmail = new TextField();
-		campoEmail.setMaxSize(230, 30);
+		campoCpf = new TextField();
+		campoCpf.setMaxSize(230, 30);
 		campoSenha = new PasswordField();
 		campoSenha.setMaxSize(230, 30);
 		
 		botaoEntrar = new Button("Entrar");
-		botaoEntrar.setMaxSize(70, 25);
+		botaoEntrar.setAlignment(Pos.CENTER);
 		
 	}
 	
 	private static void adicionarElementosNaTela() {
-		gridPaneLogin.add(labelEmail, 0, 0);
-		gridPaneLogin.add(campoEmail, 1, 0);
-		gridPaneLogin.add(labelSenha, 0, 1);
-		gridPaneLogin.add(campoSenha, 1, 1);
-		gridPaneLogin.add(botaoEntrar, 0, 2);
+		gridPaneLogin.add(labelCpf, 0, 1);
+		gridPaneLogin.add(campoCpf, 1, 1);
+		gridPaneLogin.add(labelSenha, 0, 2);
+		gridPaneLogin.add(campoSenha, 1, 2);
+		gridPaneLogin.add(botaoEntrar, 1, 3);
 	}
 	
-	private static void adicionarAcaoBotaoEntrar() {
-		
+	private static void adicionarAcaoBotaoEntrar(Stage stage) {
+		botaoEntrar.setOnAction(e -> {
+			String cpf = campoCpf.getText();
+			String senha = campoSenha.getText();
+			DAO.iniciarConexao();
+			
+			if(DAO.bibliotecarioExiste(cpf, senha)) {
+				stage.close();
+				DAO.fecharConexao();
+				//alterar par tela de menuPrincipal
+			}
+			else {
+				//exibir algo que indique erro, bibliotecario nao cadastrado
+				DAO.fecharConexao();
+			}	
+		});
 	}
 	
 	private static RowConstraints criarLinha() {
 		RowConstraints linha = new RowConstraints();
-		linha.setPercentHeight(20);
+		linha.setPercentHeight(15);
 		linha.setFillHeight(true);
 		return linha;
 	}
@@ -78,10 +95,10 @@ public class TelaDeLogin {
 	}
 	
 	
-	public static Scene obterCena() {
+	public static Scene obterCena(Stage stage) {
 		configurarElementosVisuais();
 		adicionarElementosNaTela();
-		adicionarAcaoBotaoEntrar();
+		adicionarAcaoBotaoEntrar(stage);
 		cenaLogin = new Scene(gridPaneLogin, 350, 400);
 		return cenaLogin;
 	}

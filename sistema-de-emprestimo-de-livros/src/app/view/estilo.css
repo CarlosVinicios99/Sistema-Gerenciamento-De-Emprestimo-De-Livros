@@ -1,5 +1,10 @@
 .telaInicial{
+	-fx-background-color: rgb(192, 198, 231);
+}
+
+.boxTituloPrincipal{
 	-fx-background-color: #4258d7;
+	-fx-padding: 0 303px 0 303px;
 }
 
 .tituloPrincipal{
@@ -7,4 +12,8 @@
 	-fx-font-size: 40px;
 	-fx-text-align: center;
 	-fx-padding: 10px;
+}
+
+.telaLogin{
+	-fx-font-size: 16px;
 }
