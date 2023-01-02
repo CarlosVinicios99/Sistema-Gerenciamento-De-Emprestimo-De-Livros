@@ -1,11 +1,11 @@
 package app.view;
 
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 
@@ -16,35 +16,41 @@ public class TelaMenuPrincipal {
 	private GridPane gridPaneMenuPrincipal = new GridPane();
 	private String CSS = getClass().getResource("/app/view/estilo.css").toExternalForm();
 	private Label labelTitulo = new Label("Universidade Federal Fluminense");
-	private Button botaoOpcaoUsuarios = new Button("Usuarios");
-	private Button botaoOpcaoLivros = new Button("Livros");
-	private Button botaoOpcaoEmprestimos = new Button("Emprestimos");
+	private Button botaoUsuarios = new Button("Usuarios");
+	private Button botaoLivros = new Button("Livros");
+	private Button botaoEmprestimos = new Button("Emprestimos");
 	
 	public TelaMenuPrincipal(Stage stage) {
 		this.stage = stage;
 		criarGrid();
 		configurarElementosVisuais();
 		adicionarElementosNaTela();
-		adicionarEventosAosBotoes();
+		adicionarEventoBotaoUsuarios();
+		adicionarEventoBotaoLivros();
+		adicionarEventoBotaoEmprestimos();
 		exibirCena();
 	}
 	
 	
 	private void configurarElementosVisuais() {
-		
+		botaoUsuarios.setAlignment(Pos.BASELINE_CENTER);
 		stage.setTitle("Emprestimos De Livros");
 		stage.setResizable(false);
 	}
 	
 	private void adicionarElementosNaTela() {
-		gridPaneMenuPrincipal.add(labelTitulo, );
+		gridPaneMenuPrincipal.add(labelTitulo, 0, 0);
+		gridPaneMenuPrincipal.add(botaoUsuarios, 0, 2);
+		gridPaneMenuPrincipal.add(botaoLivros, 0, 4);
+		gridPaneMenuPrincipal.add(botaoEmprestimos, 0, 6);
+
 	}
 	
 	private void criarGrid() {
 		gridPaneMenuPrincipal.getColumnConstraints().add(criarColuna(100));
 		gridPaneMenuPrincipal.getRowConstraints()
-			.addAll(criarLinha(8), criarLinha(15), criarLinha(8), criarLinha(8), 
-				criarLinha(8), criarLinha(8), criarLinha(8));
+			.addAll(criarLinha(8), criarLinha(15), criarLinha(8), criarLinha(10), 
+				criarLinha(8), criarLinha(10), criarLinha(8));
 		gridPaneMenuPrincipal.setGridLinesVisible(true);
 		
 	}
@@ -69,7 +75,15 @@ public class TelaMenuPrincipal {
 		stage.setScene(cenaPrincipal);
 	}
 	
-	private void adicionarEventosAosBotoes() {
+	private void adicionarEventoBotaoUsuarios() {
+		
+	}
+	
+	private void adicionarEventoBotaoLivros() {
+		
+	}
+	
+	private void adicionarEventoBotaoEmprestimos() {
 		
 	}
 }
