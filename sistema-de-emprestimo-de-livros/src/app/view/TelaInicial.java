@@ -14,7 +14,7 @@ public class TelaInicial {
 	private String CSS = getClass().getResource("/app/view/estilo.css").toExternalForm();
 	private HBox boxTelaInicial = new HBox();
 	private Label labelTitulo = new Label("Universidade Federal Fluminense");
-	private HBox boxTitulo = new HBox();
+	private Titulo titulo;
 	
 	public TelaInicial(Stage primaryStage) {
 		this.primaryStage = primaryStage;
@@ -25,12 +25,10 @@ public class TelaInicial {
 	private void inicializar() {
 		labelTitulo.getStyleClass().add("tituloPrincipal");
 		
-		boxTitulo.setMaxHeight(50);
+		titulo = new Titulo(labelTitulo);
+		titulo.getStyleClass().add("boxTituloPrincipal");
 		
-		boxTitulo.getChildren().add(labelTitulo);
-		boxTitulo.getStyleClass().add("boxTituloPrincipal");
-		
-		boxTelaInicial.getChildren().add(boxTitulo);
+		boxTelaInicial.getChildren().add(titulo);
 		boxTelaInicial.getStyleClass().add("telaInicial");
 		boxTelaInicial.setAlignment(Pos.BASELINE_CENTER);
 		
