@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 
 public class TelaMenuPrincipal {
 	
+	private Titulo titulo;
 	private Stage stage = new Stage();
 	private Scene cenaPrincipal;
 	private GridPane gridPaneMenuPrincipal = new GridPane();
@@ -33,13 +34,32 @@ public class TelaMenuPrincipal {
 	
 	
 	private void configurarElementosVisuais() {
-		botaoUsuarios.setAlignment(Pos.BASELINE_CENTER);
 		stage.setTitle("Emprestimos De Livros");
 		stage.setResizable(false);
+		gridPaneMenuPrincipal.setAlignment(Pos.TOP_CENTER);
+		gridPaneMenuPrincipal.getStyleClass().add("telaMenuPrincipal");
+		
+		labelTitulo.getStyleClass().add("tituloPrincipal");
+		
+		titulo = new Titulo(labelTitulo);
+		titulo.getStyleClass().add("boxTituloPrincipal");
+		
+		botaoUsuarios.setTranslateX(490);
+		botaoUsuarios.setMaxSize(300, 50);
+		botaoUsuarios.getStyleClass().add("botoesMenuPrincipal");
+		
+		botaoLivros.setTranslateX(490);
+		botaoLivros.setMaxSize(300, 50);
+		botaoLivros.getStyleClass().add("botoesMenuPrincipal");
+		
+		botaoEmprestimos.setTranslateX(490);
+		botaoEmprestimos.setMaxSize(300, 50);
+		botaoEmprestimos.getStyleClass().add("botoesMenuPrincipal");
+		
 	}
 	
 	private void adicionarElementosNaTela() {
-		gridPaneMenuPrincipal.add(labelTitulo, 0, 0);
+		gridPaneMenuPrincipal.add(titulo, 0, 0);
 		gridPaneMenuPrincipal.add(botaoUsuarios, 0, 2);
 		gridPaneMenuPrincipal.add(botaoLivros, 0, 4);
 		gridPaneMenuPrincipal.add(botaoEmprestimos, 0, 6);
@@ -49,9 +69,8 @@ public class TelaMenuPrincipal {
 	private void criarGrid() {
 		gridPaneMenuPrincipal.getColumnConstraints().add(criarColuna(100));
 		gridPaneMenuPrincipal.getRowConstraints()
-			.addAll(criarLinha(8), criarLinha(15), criarLinha(8), criarLinha(10), 
+			.addAll(criarLinha(9), criarLinha(15), criarLinha(8), criarLinha(10), 
 				criarLinha(8), criarLinha(10), criarLinha(8));
-		gridPaneMenuPrincipal.setGridLinesVisible(true);
 		
 	}
 	
