@@ -44,7 +44,7 @@ public class TelaInicial {
 	}
 	
 	private void exibirTelaDeLogin() {
-		Scene login = TelaDeLogin.obterCena(secondStage);
+		Scene login = TelaDeLogin.obterCena(primaryStage, secondStage);
 		login.getStylesheets().add(CSS);
 		secondStage.setScene(login);
 		secondStage.setX(560);

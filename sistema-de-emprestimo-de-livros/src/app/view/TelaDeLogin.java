@@ -57,16 +57,16 @@ public class TelaDeLogin {
 		gridPaneLogin.add(botaoEntrar, 1, 3);
 	}
 	
-	private static void adicionarAcaoBotaoEntrar(Stage stage) {
+	private static void adicionarAcaoBotaoEntrar(Stage primaryStage, Stage secondStage) {
 		botaoEntrar.setOnAction(e -> {
 			String cpf = campoCpf.getText();
 			String senha = campoSenha.getText();
 			DAO.iniciarConexao();
 			
 			if(DAO.bibliotecarioExiste(cpf, senha)) {
-				stage.close();
+				secondStage.close();
 				DAO.fecharConexao();
-				//alterar par tela de menuPrincipal
+				new TelaMenuPrincipal(primaryStage);
 			}
 			else {
 				//exibir algo que indique erro, bibliotecario nao cadastrado
@@ -95,10 +95,10 @@ public class TelaDeLogin {
 	}
 	
 	
-	public static Scene obterCena(Stage stage) {
+	public static Scene obterCena(Stage primaryStage, Stage secondStage) {
 		configurarElementosVisuais();
 		adicionarElementosNaTela();
-		adicionarAcaoBotaoEntrar(stage);
+		adicionarAcaoBotaoEntrar(primaryStage, secondStage);
 		cenaLogin = new Scene(gridPaneLogin, 350, 400);
 		return cenaLogin;
 	}
