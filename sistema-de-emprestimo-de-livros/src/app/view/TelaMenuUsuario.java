@@ -87,13 +87,13 @@ public class TelaMenuUsuario {
 	
 	private void adicionarEventoBotaoCadastrar() {
 		botaoCadastrar.setOnAction(e -> {
-			//new TelaCadastroDeUsuario(stage);
+			new TelaCadastroDeUsuario(stage);
 		});
 	}
 	
 	private void adicionarEventoBotaoRemover() {
 		botaoRemover.setOnAction(e -> {
-			//new TelaRemocaoDeUsuario(stage);
+			new TelaRemocaoDeUsuario(stage);
 		});
 		
 	}
