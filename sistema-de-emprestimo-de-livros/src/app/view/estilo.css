@@ -26,9 +26,6 @@
 	-fx-background-radius: 5px;
 }
 
-.telaMenuPrincipal{
-	-fx-background-color: #DCE2ED;
-}
 
 .botaoDeSubMenu{
 	-fx-font-size: 25px;
@@ -38,12 +35,9 @@
 	-fx-background-radius: 5px;
 }
 
-.telaDeSubMenu{
-	-fx-background-color: #DCE2ED;
-}
-
-.telasMenuDeUsuario{
+.telasDeMenu{
 	-fx-font-size: 17px;
+	-fx-background-color: #DCE2ED;
 	-fx-background-color: #DCE2ED;
 }
 

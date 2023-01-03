@@ -27,6 +27,7 @@ public class Livro {
 		this.descricao = descricao;
 		this.autor = autor;
 		this.proprietario = proprietario;
+		this.disponibilidade = true;
 	}
 	
 	public Livro(String codigo, String titulo, String descricao, String autor, String proprietario, boolean disponibilidade) {

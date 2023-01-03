@@ -64,7 +64,7 @@ public class TelaRemocaoDeUsuario {
 		stage.setTitle("Emprestimos De Livros");
 		stage.setResizable(false);
 		gridPaneRemocaoDeUsuario.setAlignment(Pos.TOP_CENTER);
-		gridPaneRemocaoDeUsuario.getStyleClass().add("telasMenuDeUsuario");
+		gridPaneRemocaoDeUsuario.getStyleClass().add("telasDeMenu");
 		
 		labelTitulo.getStyleClass().add("tituloPrincipal");
 		titulo = new Titulo(labelTitulo);

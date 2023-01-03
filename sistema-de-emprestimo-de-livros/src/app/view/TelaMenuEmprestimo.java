@@ -57,7 +57,7 @@ public class TelaMenuEmprestimo {
 		stage.setTitle("Emprestimos De Livros");
 		stage.setResizable(false);
 		gridPaneMenuEmprestimo.setAlignment(Pos.TOP_CENTER);
-		gridPaneMenuEmprestimo.getStyleClass().add("telaDeSubMenu");
+		gridPaneMenuEmprestimo.getStyleClass().add("telasDeMenu");
 		
 		labelTitulo.getStyleClass().add("tituloPrincipal");
 		

@@ -57,7 +57,7 @@ public class TelaMenuLivro {
 		stage.setTitle("Emprestimos De Livros");
 		stage.setResizable(false);
 		gridPaneMenuLivro.setAlignment(Pos.TOP_CENTER);
-		gridPaneMenuLivro.getStyleClass().add("telaDeSubMenu");
+		gridPaneMenuLivro.getStyleClass().add("telasDeMenu");
 		
 		labelTitulo.getStyleClass().add("tituloPrincipal");
 		
@@ -87,7 +87,7 @@ public class TelaMenuLivro {
 	
 	private void adicionarEventoBotaoCadastrar() {
 		botaoCadastrar.setOnAction(e -> {
-			//new TelaCadastroDeLivro(stage);
+			new TelaCadastroDeLivro(stage);
 		});
 	}
 	

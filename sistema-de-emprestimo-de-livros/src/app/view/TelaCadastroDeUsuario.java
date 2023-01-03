@@ -71,7 +71,7 @@ public class TelaCadastroDeUsuario {
 		stage.setTitle("Emprestimos De Livros");
 		stage.setResizable(false);
 		gridPaneCadastroDeUsuario.setAlignment(Pos.TOP_CENTER);
-		gridPaneCadastroDeUsuario.getStyleClass().add("telasMenuDeUsuario");
+		gridPaneCadastroDeUsuario.getStyleClass().add("telasDeMenu");
 		
 		labelTitulo.getStyleClass().add("tituloPrincipal");
 		titulo = new Titulo(labelTitulo);
