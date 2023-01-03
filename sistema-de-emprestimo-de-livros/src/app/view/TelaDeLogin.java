@@ -45,7 +45,9 @@ public class TelaDeLogin {
 		campoSenha.setMaxSize(230, 30);
 		
 		botaoEntrar = new Button("Entrar");
-		botaoEntrar.setTranslateX(50);
+		botaoEntrar.setTranslateX(47);
+		botaoEntrar.setMaxSize(80, 30);
+		botaoEntrar.getStyleClass().add("botaoDeConfirmacao");
 		
 	}
 	
@@ -69,7 +71,6 @@ public class TelaDeLogin {
 				new TelaMenuPrincipal(primaryStage);
 			}
 			else {
-				//exibir algo que indique erro, bibliotecario nao cadastrado
 				DAO.fecharConexao();
 			}	
 		});

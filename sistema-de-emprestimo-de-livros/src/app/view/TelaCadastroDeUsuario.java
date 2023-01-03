@@ -46,9 +46,9 @@ public class TelaCadastroDeUsuario {
 	private void criarGrid() {
 		gridPaneCadastroDeUsuario.getColumnConstraints().add(criarColuna(100));
 		gridPaneCadastroDeUsuario.getRowConstraints()
-			.addAll(criarLinha(9), criarLinha(13), criarLinha(6), criarLinha(2), 
-				criarLinha(6), criarLinha(2), criarLinha(6), criarLinha(2), criarLinha(6),
-				criarLinha(2), criarLinha(6), criarLinha(4), criarLinha(6));
+			.addAll(criarLinha(9), criarLinha(13), criarLinha(6), criarLinha(3), 
+				criarLinha(6), criarLinha(3), criarLinha(6), criarLinha(3), criarLinha(6),
+				criarLinha(3), criarLinha(6), criarLinha(6), criarLinha(6));
 	}
 	
 	private RowConstraints criarLinha(double heigth) {
@@ -69,30 +69,44 @@ public class TelaCadastroDeUsuario {
 		stage.setTitle("Emprestimos De Livros");
 		stage.setResizable(false);
 		gridPaneCadastroDeUsuario.setAlignment(Pos.TOP_CENTER);
+		gridPaneCadastroDeUsuario.getStyleClass().add("telaCadastroDeUsuario");
 		
 		labelTitulo.getStyleClass().add("tituloPrincipal");
 		titulo = new Titulo(labelTitulo);
 		titulo.getStyleClass().add("boxTituloPrincipal");
 		
-		labelNome.setTranslateX(50);
+		labelNome.setTranslateX(450);
 		labelNome.setMaxSize(70, 25);
-		campoNome.setTranslateX(130);
+		campoNome.setTranslateX(550);
+		campoNome.setMaxSize(250, 30);
 		
-		labelMatricula.setTranslateX(50);
+		labelMatricula.setTranslateX(450);
 		labelMatricula.setMaxSize(110, 25);
-		campoMatricula.setTranslateX(180);
+		campoMatricula.setTranslateX(550);
+		campoMatricula.setMaxSize(250, 30);
 		
-		labelEmail.setTranslateX(50);
-		campoEmail.setTranslateX(140);
+		labelEmail.setTranslateX(450);
+		labelEmail.setMaxSize(70, 25);
+		campoEmail.setTranslateX(550);
+		campoEmail.setMaxSize(250, 30);
 		
-		labelCpf.setTranslateX(50);
-		campoCpf.setTranslateX(125);
+		labelCpf.setTranslateX(450);
+		labelCpf.setMaxSize(70, 25);
+		campoCpf.setTranslateX(550);
+		campoCpf.setMaxSize(250, 30);
 		
-		labelSenha.setTranslateX(50);
-		campoSenha.setTranslateX(150);
+		labelSenha.setTranslateX(450);
+		labelSenha.setMaxSize(70, 25);
+		campoSenha.setTranslateX(550);
+		campoSenha.setMaxSize(250, 30);
 		
-		botaoCancelar.setTranslateX(50);
-		botaoCadastrar.setTranslateX(800);
+		botaoCancelar.setTranslateX(450);
+		botaoCancelar.setMaxSize(110, 30);
+		botaoCancelar.getStyleClass().add("botaoDeConfirmacao");
+		botaoCadastrar.setTranslateX(770);
+		botaoCadastrar.setMaxSize(110, 32);
+		botaoCadastrar.getStyleClass().add("botaoDeConfirmacao");
+		
 	}
 	
 	private void adicionarElementosNaTela() {

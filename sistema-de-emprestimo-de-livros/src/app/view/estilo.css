@@ -18,13 +18,12 @@
 	-fx-font-size: 16px;
 }
 
-
 .botoesMenuPrincipal{
 	-fx-font-size: 25px;
 	-fx-background-color: #4258d7;
 	-fx-text-fill: white;
 	-fx-text-align: center;
-	-fx-border-radius: 10px;
+	-fx-background-radius: 5px;
 }
 
 .telaMenuPrincipal{
@@ -36,10 +35,23 @@
 	-fx-background-color: #4258d7;
 	-fx-text-fill: white;
 	-fx-text-align: center;
-	-fx-border-radius: 10px;
+	-fx-background-radius: 5px;
 }
 
 .telaDeSubMenu{
 	-fx-background-color: #DCE2ED;
+}
+
+.telaCadastroDeUsuario{
+	-fx-font-size: 16px;
+	-fx-background-color: #DCE2ED;
+}
+
+.botaoDeConfirmacao{
+	-fx-font-size: 17px;
+	-fx-text-fill: white;
+	-fx-background-color: #4258d7;
+	-fx-text-align: center;
+	-fx-background-radius: 5px;
 }
 
