@@ -146,8 +146,7 @@ public class DAO {
 			preparedStatement.setString(1, cpf);
 			preparedStatement.setString(2, senha);
 			ResultSet resultadoConsulta = preparedStatement.executeQuery();
-			
-			if(resultadoConsulta != null) {
+			if(resultadoConsulta.next()) {
 				return true;
 			}
 			return false;
