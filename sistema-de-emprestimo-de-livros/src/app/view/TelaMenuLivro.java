@@ -93,7 +93,7 @@ public class TelaMenuLivro {
 	
 	private void adicionarEventoBotaoRemover() {
 		botaoRemover.setOnAction(e -> {
-			//new TelaRemocaoDeLivro(stage);
+			new TelaRemocaoDeLivro(stage);
 		});
 	}
 	
