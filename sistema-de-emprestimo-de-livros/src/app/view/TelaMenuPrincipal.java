@@ -95,14 +95,20 @@ public class TelaMenuPrincipal {
 	}
 	
 	private void adicionarEventoBotaoUsuarios() {
-		
+		botaoUsuarios.setOnAction(e -> {
+			//new TelaMenuUsuario(stage)
+		});
 	}
 	
 	private void adicionarEventoBotaoLivros() {
-		
+		botaoLivros.setOnAction(e -> {
+			//new TelaMenuLivro(stage)
+		});
 	}
 	
 	private void adicionarEventoBotaoEmprestimos() {
-		
+		botaoEmprestimos.setOnAction(e -> {
+			//new TelaMenu
+		});
 	}
 }

@@ -45,7 +45,7 @@ public class TelaDeLogin {
 		campoSenha.setMaxSize(230, 30);
 		
 		botaoEntrar = new Button("Entrar");
-		botaoEntrar.setAlignment(Pos.CENTER);
+		botaoEntrar.setTranslateX(50);
 		
 	}
 	
