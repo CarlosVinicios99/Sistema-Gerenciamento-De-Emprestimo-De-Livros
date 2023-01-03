@@ -30,3 +30,16 @@
 .telaMenuPrincipal{
 	-fx-background-color: #DCE2ED;
 }
+
+.botaoDeSubMenu{
+	-fx-font-size: 25px;
+	-fx-background-color: #4258d7;
+	-fx-text-fill: white;
+	-fx-text-align: center;
+	-fx-border-radius: 10px;
+}
+
+.telaDeSubMenu{
+	-fx-background-color: #DCE2ED;
+}
+

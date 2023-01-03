@@ -11,10 +11,10 @@ import javafx.stage.Stage;
 
 public class TelaMenuPrincipal {
 	
-	private Titulo titulo;
 	private Stage stage = new Stage();
 	private Scene cenaPrincipal;
 	private GridPane gridPaneMenuPrincipal = new GridPane();
+	private Titulo titulo;
 	private String CSS = getClass().getResource("/app/view/estilo.css").toExternalForm();
 	private Label labelTitulo = new Label("Universidade Federal Fluminense");
 	private Button botaoUsuarios = new Button("Usuarios");
@@ -71,7 +71,6 @@ public class TelaMenuPrincipal {
 		gridPaneMenuPrincipal.getRowConstraints()
 			.addAll(criarLinha(9), criarLinha(15), criarLinha(8), criarLinha(10), 
 				criarLinha(8), criarLinha(10), criarLinha(8));
-		
 	}
 	
 	private RowConstraints criarLinha(double heigth) {
@@ -96,19 +95,19 @@ public class TelaMenuPrincipal {
 	
 	private void adicionarEventoBotaoUsuarios() {
 		botaoUsuarios.setOnAction(e -> {
-			//new TelaMenuUsuario(stage)
+			new TelaMenuUsuario(stage);
 		});
 	}
 	
 	private void adicionarEventoBotaoLivros() {
 		botaoLivros.setOnAction(e -> {
-			//new TelaMenuLivro(stage)
+			new TelaMenuLivro(stage);
 		});
 	}
 	
 	private void adicionarEventoBotaoEmprestimos() {
 		botaoEmprestimos.setOnAction(e -> {
-			//new TelaMenu
+			new TelaMenuEmprestimo(stage);
 		});
 	}
 }

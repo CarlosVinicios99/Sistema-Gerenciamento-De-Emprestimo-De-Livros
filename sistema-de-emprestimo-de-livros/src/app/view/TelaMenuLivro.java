@@ -1,5 +1,11 @@
 package app.view;
 
-public class TelaMenuLivro {
+import javafx.stage.Stage;
 
+public class TelaMenuLivro {
+	
+	public TelaMenuLivro(Stage stage) {
+		
+	}
+	
 }
