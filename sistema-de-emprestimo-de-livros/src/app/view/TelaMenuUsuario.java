@@ -86,15 +86,22 @@ public class TelaMenuUsuario {
 	}
 	
 	private void adicionarEventoBotaoCadastrar() {
-		
+		botaoCadastrar.setOnAction(e -> {
+			//new TelaCadastroDeUsuario(stage);
+		});
 	}
 	
 	private void adicionarEventoBotaoRemover() {
+		botaoRemover.setOnAction(e -> {
+			//new TelaRemocaoDeUsuario(stage);
+		});
 		
 	}
 	
 	private void adicionarEventoBotaoVoltar() {
-		
+		botaoVoltar.setOnAction(e -> {
+			new TelaMenuPrincipal(stage);
+		});
 	}
 	
 	private void exibirCena() {
@@ -102,7 +109,5 @@ public class TelaMenuUsuario {
 		cenaMenuUsuario.getStylesheets().add(CSS);
 		stage.setScene(cenaMenuUsuario);
 	}
-	
-	
-	
+
 }
