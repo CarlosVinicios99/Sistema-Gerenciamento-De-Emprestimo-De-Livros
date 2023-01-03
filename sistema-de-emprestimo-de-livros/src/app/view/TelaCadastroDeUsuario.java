@@ -1,5 +1,7 @@
 package app.view;
 
+import app.model.entities.Usuario;
+import app.repositories.DAO;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -69,7 +71,7 @@ public class TelaCadastroDeUsuario {
 		stage.setTitle("Emprestimos De Livros");
 		stage.setResizable(false);
 		gridPaneCadastroDeUsuario.setAlignment(Pos.TOP_CENTER);
-		gridPaneCadastroDeUsuario.getStyleClass().add("telaCadastroDeUsuario");
+		gridPaneCadastroDeUsuario.getStyleClass().add("telasMenuDeUsuario");
 		
 		labelTitulo.getStyleClass().add("tituloPrincipal");
 		titulo = new Titulo(labelTitulo);
@@ -78,33 +80,33 @@ public class TelaCadastroDeUsuario {
 		labelNome.setTranslateX(450);
 		labelNome.setMaxSize(70, 25);
 		campoNome.setTranslateX(550);
-		campoNome.setMaxSize(250, 30);
+		campoNome.setMaxSize(270, 30);
 		
 		labelMatricula.setTranslateX(450);
 		labelMatricula.setMaxSize(110, 25);
 		campoMatricula.setTranslateX(550);
-		campoMatricula.setMaxSize(250, 30);
+		campoMatricula.setMaxSize(270, 30);
 		
 		labelEmail.setTranslateX(450);
 		labelEmail.setMaxSize(70, 25);
 		campoEmail.setTranslateX(550);
-		campoEmail.setMaxSize(250, 30);
+		campoEmail.setMaxSize(270, 30);
 		
 		labelCpf.setTranslateX(450);
 		labelCpf.setMaxSize(70, 25);
 		campoCpf.setTranslateX(550);
-		campoCpf.setMaxSize(250, 30);
+		campoCpf.setMaxSize(270, 30);
 		
 		labelSenha.setTranslateX(450);
 		labelSenha.setMaxSize(70, 25);
 		campoSenha.setTranslateX(550);
-		campoSenha.setMaxSize(250, 30);
+		campoSenha.setMaxSize(270, 30);
 		
 		botaoCancelar.setTranslateX(450);
 		botaoCancelar.setMaxSize(110, 30);
 		botaoCancelar.getStyleClass().add("botaoDeConfirmacao");
 		botaoCadastrar.setTranslateX(770);
-		botaoCadastrar.setMaxSize(110, 32);
+		botaoCadastrar.setMaxSize(110, 30);
 		botaoCadastrar.getStyleClass().add("botaoDeConfirmacao");
 		
 	}
@@ -126,11 +128,25 @@ public class TelaCadastroDeUsuario {
 	}
 	
 	private void adicionarEventoBotaoCadastrar() {
-		
+		botaoCadastrar.setOnAction(e -> {
+			String nome = campoNome.getText();
+			String matricula = campoMatricula.getText();
+			String cpf = campoCpf.getText();
+			String email = campoEmail.getText();
+			String senha = campoSenha.getText();
+			
+			Usuario usuario = new Usuario(matricula, nome, cpf, email, senha);
+			DAO.iniciarConexao();
+			DAO.inserirUsuario(usuario);
+			DAO.fecharConexao();
+			new TelaMenuUsuario(stage);
+		});
 	}
 	
 	private void adicionarEventoBotaoCancelar() {
-		
+		botaoCancelar.setOnAction(e -> {
+			new TelaMenuUsuario(stage);
+		});
 	}
 	
 	private void exibirCena() {

@@ -64,8 +64,9 @@ public class TelaDeLogin {
 			String cpf = campoCpf.getText();
 			String senha = campoSenha.getText();
 			DAO.iniciarConexao();
-			
-			if(DAO.bibliotecarioExiste(cpf, senha)) {
+			boolean resultado = DAO.bibliotecarioExiste(cpf, senha);
+			System.out.println(resultado);
+			if(resultado) {
 				secondStage.close();
 				DAO.fecharConexao();
 				new TelaMenuPrincipal(primaryStage);
