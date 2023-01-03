@@ -332,6 +332,38 @@ public class DAO {
 			}
 	}
 	
+	public static Livro consultarLivroPorCodigo(String codigoConsulta) {
+		String SQL =
+				"""
+					SELECT * FROM livros WHERE codigo = ?;
+				""";
+			
+			try {
+				preparedStatement = conexao.prepareStatement(SQL);
+				preparedStatement.setString(1, codigoConsulta);
+				ResultSet resultadoConsulta = preparedStatement.executeQuery();
+				
+				if(resultadoConsulta != null) {
+					while(resultadoConsulta.next()) {
+						int idLivro = resultadoConsulta.getInt("id");
+						String codigo = resultadoConsulta.getString("codigo");
+						String titulo = resultadoConsulta.getString("titulo");
+						String descricao = resultadoConsulta.getString("descricao");
+						String autor = resultadoConsulta.getString("autor");
+						String proprietario = resultadoConsulta.getString("proprietario");
+						boolean disponibilidade = resultadoConsulta.getBoolean("disponibilidade");
+						return new Livro(idLivro, codigo, titulo, descricao, autor, proprietario, disponibilidade);
+					} 
+				}
+				return null;
+				
+			}
+			catch(SQLException e) {
+				System.out.println(e.getMessage());
+				return null;
+			}
+	}
+	
 	//TESTADO
 	private static void atualizarDisponibilidadeDeLivro(Livro livro) {
 		livro.alterarDisponibilidade();
