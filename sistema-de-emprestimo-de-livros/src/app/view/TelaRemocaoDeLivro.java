@@ -21,6 +21,7 @@ public class TelaRemocaoDeLivro {
 	private Label labelTitulo = new Label("Universidade Federal Fluminense");
 	private GridPane gridPaneRemocaoDeLivro = new GridPane();
 	
+	private Label labelTituloDeNavegacao = new Label("Remover Livro");
 	private TextField campoCodigo = new TextField();;
 	private Label labelCodigo = new Label("Codigo: ");
 	private Button botaoRemover = new Button("Remover");
@@ -39,7 +40,8 @@ public class TelaRemocaoDeLivro {
 	private void criarGrid() {
 		gridPaneRemocaoDeLivro.getColumnConstraints().add(criarColuna(100));
 		gridPaneRemocaoDeLivro.getRowConstraints()
-			.addAll(criarLinha(9), criarLinha(13), criarLinha(6), criarLinha(6));
+			.addAll(criarLinha(9), criarLinha(6), criarLinha(9), criarLinha(6), 
+				criarLinha(6), criarLinha(6));
 	}
 	
 	private RowConstraints criarLinha(double heigth) {
@@ -66,6 +68,10 @@ public class TelaRemocaoDeLivro {
 		titulo = new Titulo(labelTitulo);
 		titulo.getStyleClass().add("boxTituloPrincipal");
 		
+		labelTituloDeNavegacao.setTranslateX(570);
+		labelTituloDeNavegacao.setMaxSize(200, 25);
+		labelTituloDeNavegacao.getStyleClass().add("tituloNavegacao");
+		
 		labelCodigo.setTranslateX(450);
 		labelCodigo.setMaxSize(80, 25);
 		campoCodigo.setTranslateX(550);
@@ -82,10 +88,11 @@ public class TelaRemocaoDeLivro {
 	
 	private void adicionarElementosNaTela() {
 		gridPaneRemocaoDeLivro.add(titulo, 0, 0);
-		gridPaneRemocaoDeLivro.add(labelCodigo, 0, 2);
-		gridPaneRemocaoDeLivro.add(campoCodigo, 0, 2);
-		gridPaneRemocaoDeLivro.add(botaoCancelar, 0, 4);
-		gridPaneRemocaoDeLivro.add(botaoRemover, 0, 4);
+		gridPaneRemocaoDeLivro.add(labelTituloDeNavegacao, 0, 2);
+		gridPaneRemocaoDeLivro.add(labelCodigo, 0, 4);
+		gridPaneRemocaoDeLivro.add(campoCodigo, 0, 4);
+		gridPaneRemocaoDeLivro.add(botaoCancelar, 0, 6);
+		gridPaneRemocaoDeLivro.add(botaoRemover, 0, 6);
 	}
 	
 	private void adicionarEventoBotaoRemover() {

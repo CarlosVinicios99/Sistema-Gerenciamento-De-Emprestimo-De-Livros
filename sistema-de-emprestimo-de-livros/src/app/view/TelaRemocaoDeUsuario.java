@@ -22,6 +22,7 @@ public class TelaRemocaoDeUsuario {
 	private Label labelTitulo = new Label("Universidade Federal Fluminense");
 	private GridPane gridPaneRemocaoDeUsuario = new GridPane();
 	
+	private Label labelTituloDeNavegacao = new Label("Remover Usuário");
 	private TextField campoCpf = new TextField();
 	private PasswordField campoSenha = new PasswordField();
 	private Label labelCpf = new Label("CPF: ");
@@ -42,8 +43,8 @@ public class TelaRemocaoDeUsuario {
 	private void criarGrid() {
 		gridPaneRemocaoDeUsuario.getColumnConstraints().add(criarColuna(100));
 		gridPaneRemocaoDeUsuario.getRowConstraints()
-			.addAll(criarLinha(9), criarLinha(13), criarLinha(6), criarLinha(3), 
-				criarLinha(6), criarLinha(6), criarLinha(6));
+			.addAll(criarLinha(9), criarLinha(6), criarLinha(9), criarLinha(6), criarLinha(6),
+				criarLinha(3), criarLinha(6), criarLinha(6), criarLinha(6));
 	}
 	
 	private RowConstraints criarLinha(double heigth) {
@@ -70,6 +71,10 @@ public class TelaRemocaoDeUsuario {
 		titulo = new Titulo(labelTitulo);
 		titulo.getStyleClass().add("boxTituloPrincipal");
 		
+		labelTituloDeNavegacao.setTranslateX(550);
+		labelTituloDeNavegacao.setMaxSize(230, 25);
+		labelTituloDeNavegacao.getStyleClass().add("tituloNavegacao");
+		
 		labelCpf.setTranslateX(450);
 		labelCpf.setMaxSize(70, 25);
 		campoCpf.setTranslateX(550);
@@ -91,12 +96,13 @@ public class TelaRemocaoDeUsuario {
 	
 	private void adicionarElementosNaTela() {
 		gridPaneRemocaoDeUsuario.add(titulo, 0, 0);
-		gridPaneRemocaoDeUsuario.add(labelCpf, 0, 2);
-		gridPaneRemocaoDeUsuario.add(campoCpf, 0, 2);
-		gridPaneRemocaoDeUsuario.add(labelSenha, 0, 4);
-		gridPaneRemocaoDeUsuario.add(campoSenha, 0, 4);
-		gridPaneRemocaoDeUsuario.add(botaoCancelar, 0, 6);
-		gridPaneRemocaoDeUsuario.add(botaoRemover, 0, 6);
+		gridPaneRemocaoDeUsuario.add(labelTituloDeNavegacao, 0, 2);
+		gridPaneRemocaoDeUsuario.add(labelCpf, 0, 4);
+		gridPaneRemocaoDeUsuario.add(campoCpf, 0, 4);
+		gridPaneRemocaoDeUsuario.add(labelSenha, 0, 6);
+		gridPaneRemocaoDeUsuario.add(campoSenha, 0, 6);
+		gridPaneRemocaoDeUsuario.add(botaoCancelar, 0, 8);
+		gridPaneRemocaoDeUsuario.add(botaoRemover, 0, 8);
 	}
 	
 	private void adicionarEventoBotaoRemover() {

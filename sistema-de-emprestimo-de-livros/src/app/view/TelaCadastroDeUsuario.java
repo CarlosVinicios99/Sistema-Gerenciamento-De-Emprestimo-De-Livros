@@ -22,6 +22,7 @@ public class TelaCadastroDeUsuario {
 	private Label labelTitulo = new Label("Universidade Federal Fluminense");
 	private GridPane gridPaneCadastroDeUsuario = new GridPane();
 	
+	private Label labelTituloDeNavegacao = new Label("Cadastrar Usuário");
 	private TextField campoNome = new TextField();
 	private TextField campoEmail = new TextField();
 	private TextField campoCpf = new TextField();
@@ -48,9 +49,9 @@ public class TelaCadastroDeUsuario {
 	private void criarGrid() {
 		gridPaneCadastroDeUsuario.getColumnConstraints().add(criarColuna(100));
 		gridPaneCadastroDeUsuario.getRowConstraints()
-			.addAll(criarLinha(9), criarLinha(13), criarLinha(6), criarLinha(3), 
-				criarLinha(6), criarLinha(3), criarLinha(6), criarLinha(3), criarLinha(6),
-				criarLinha(3), criarLinha(6), criarLinha(6), criarLinha(6));
+			.addAll(criarLinha(9), criarLinha(6), criarLinha(9), criarLinha(6), criarLinha(6), 
+				criarLinha(3), criarLinha(6), criarLinha(3), criarLinha(6), criarLinha(3), 
+				criarLinha(6), criarLinha(3), criarLinha(6), criarLinha(6), criarLinha(6));
 	}
 	
 	private RowConstraints criarLinha(double heigth) {
@@ -76,6 +77,10 @@ public class TelaCadastroDeUsuario {
 		labelTitulo.getStyleClass().add("tituloPrincipal");
 		titulo = new Titulo(labelTitulo);
 		titulo.getStyleClass().add("boxTituloPrincipal");
+		
+		labelTituloDeNavegacao.setTranslateX(550);
+		labelTituloDeNavegacao.setMaxSize(230, 25);
+		labelTituloDeNavegacao.getStyleClass().add("tituloNavegacao");
 		
 		labelNome.setTranslateX(450);
 		labelNome.setMaxSize(70, 25);
@@ -113,18 +118,19 @@ public class TelaCadastroDeUsuario {
 	
 	private void adicionarElementosNaTela() {
 		gridPaneCadastroDeUsuario.add(titulo, 0, 0);
-		gridPaneCadastroDeUsuario.add(labelNome, 0, 2);
-		gridPaneCadastroDeUsuario.add(campoNome, 0, 2);
-		gridPaneCadastroDeUsuario.add(labelMatricula, 0, 4);
-		gridPaneCadastroDeUsuario.add(campoMatricula, 0, 4);
-		gridPaneCadastroDeUsuario.add(labelEmail, 0, 6);
-		gridPaneCadastroDeUsuario.add(campoEmail, 0, 6);
-		gridPaneCadastroDeUsuario.add(labelCpf, 0, 8);
-		gridPaneCadastroDeUsuario.add(campoCpf, 0, 8);
-		gridPaneCadastroDeUsuario.add(labelSenha, 0, 10);
-		gridPaneCadastroDeUsuario.add(campoSenha, 0, 10);
-		gridPaneCadastroDeUsuario.add(botaoCancelar, 0, 12);
-		gridPaneCadastroDeUsuario.add(botaoCadastrar, 0, 12);
+		gridPaneCadastroDeUsuario.add(labelTituloDeNavegacao, 0, 2);
+		gridPaneCadastroDeUsuario.add(labelNome, 0, 4);
+		gridPaneCadastroDeUsuario.add(campoNome, 0, 4);
+		gridPaneCadastroDeUsuario.add(labelMatricula, 0, 6);
+		gridPaneCadastroDeUsuario.add(campoMatricula, 0, 6);
+		gridPaneCadastroDeUsuario.add(labelEmail, 0, 8);
+		gridPaneCadastroDeUsuario.add(campoEmail, 0, 8);
+		gridPaneCadastroDeUsuario.add(labelCpf, 0, 10);
+		gridPaneCadastroDeUsuario.add(campoCpf, 0, 10);
+		gridPaneCadastroDeUsuario.add(labelSenha, 0, 12);
+		gridPaneCadastroDeUsuario.add(campoSenha, 0, 12);
+		gridPaneCadastroDeUsuario.add(botaoCancelar, 0, 14);
+		gridPaneCadastroDeUsuario.add(botaoCadastrar, 0, 14);
 	}
 	
 	private void adicionarEventoBotaoCadastrar() {

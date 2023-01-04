@@ -21,6 +21,7 @@ public class TelaCadastroDeLivro {
 	private Label labelTitulo = new Label("Universidade Federal Fluminense");
 	private GridPane gridPaneCadastroDeLivro = new GridPane();
 	
+	private Label labelTituloDeNavegacao = new Label("Cadastrar Livro");
 	private TextField campoTitulo = new TextField();
 	private TextField campoAutor = new TextField();
 	private TextField campoDescricao = new TextField();
@@ -47,8 +48,8 @@ public class TelaCadastroDeLivro {
 	private void criarGrid() {
 		gridPaneCadastroDeLivro.getColumnConstraints().add(criarColuna(100));
 		gridPaneCadastroDeLivro.getRowConstraints()
-			.addAll(criarLinha(9), criarLinha(13), criarLinha(6), criarLinha(3), 
-				criarLinha(6), criarLinha(3), criarLinha(6), criarLinha(3), criarLinha(6),
+			.addAll(criarLinha(9), criarLinha(6), criarLinha(9), criarLinha(6), criarLinha(6), 
+				criarLinha(3), criarLinha(6), criarLinha(3), criarLinha(6), criarLinha(3), criarLinha(6),
 				criarLinha(3), criarLinha(6), criarLinha(6), criarLinha(6));
 	}
 	
@@ -75,6 +76,10 @@ public class TelaCadastroDeLivro {
 		labelTitulo.getStyleClass().add("tituloPrincipal");
 		titulo = new Titulo(labelTitulo);
 		titulo.getStyleClass().add("boxTituloPrincipal");
+		
+		labelTituloDeNavegacao.setTranslateX(570);
+		labelTituloDeNavegacao.setMaxSize(200, 25);
+		labelTituloDeNavegacao.getStyleClass().add("tituloNavegacao");
 		
 		labelTituloLivro.setTranslateX(450);
 		labelTituloLivro.setMaxSize(70, 25);
@@ -112,18 +117,19 @@ public class TelaCadastroDeLivro {
 	
 	private void adicionarElementosNaTela() {
 		gridPaneCadastroDeLivro.add(titulo, 0, 0);
-		gridPaneCadastroDeLivro.add(labelTituloLivro, 0, 2);
-		gridPaneCadastroDeLivro.add(campoTitulo, 0, 2);
-		gridPaneCadastroDeLivro.add(labelAutor, 0, 4);
-		gridPaneCadastroDeLivro.add(campoAutor, 0, 4);
-		gridPaneCadastroDeLivro.add(labelDescricao, 0, 6);
-		gridPaneCadastroDeLivro.add(campoDescricao, 0, 6);
-		gridPaneCadastroDeLivro.add(labelCodigo, 0, 8);
-		gridPaneCadastroDeLivro.add(campoCodigo, 0, 8);
-		gridPaneCadastroDeLivro.add(labelProprietario, 0, 10);
-		gridPaneCadastroDeLivro.add(campoProprietario, 0, 10);
-		gridPaneCadastroDeLivro.add(botaoCancelar, 0, 12);
-		gridPaneCadastroDeLivro.add(botaoCadastrar, 0, 12);
+		gridPaneCadastroDeLivro.add(labelTituloDeNavegacao, 0, 2);
+		gridPaneCadastroDeLivro.add(labelTituloLivro, 0, 4);
+		gridPaneCadastroDeLivro.add(campoTitulo, 0, 4);
+		gridPaneCadastroDeLivro.add(labelAutor, 0, 6);
+		gridPaneCadastroDeLivro.add(campoAutor, 0, 6);
+		gridPaneCadastroDeLivro.add(labelDescricao, 0, 8);
+		gridPaneCadastroDeLivro.add(campoDescricao, 0, 8);
+		gridPaneCadastroDeLivro.add(labelCodigo, 0, 10);
+		gridPaneCadastroDeLivro.add(campoCodigo, 0, 10);
+		gridPaneCadastroDeLivro.add(labelProprietario, 0, 12);
+		gridPaneCadastroDeLivro.add(campoProprietario, 0, 12);
+		gridPaneCadastroDeLivro.add(botaoCancelar, 0, 14);
+		gridPaneCadastroDeLivro.add(botaoCadastrar, 0, 14);
 	}
 	
 	private void adicionarEventoBotaoCadastrar() {

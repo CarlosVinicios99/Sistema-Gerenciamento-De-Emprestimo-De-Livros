@@ -17,6 +17,8 @@ public class TelaMenuPrincipal {
 	private Titulo titulo;
 	private String CSS = getClass().getResource("/app/view/estilo.css").toExternalForm();
 	private Label labelTitulo = new Label("Universidade Federal Fluminense");
+	
+	private Label labelTituloDeNavegacao = new Label("Bem-Vindo(a)!");
 	private Button botaoUsuarios = new Button("Usuarios");
 	private Button botaoLivros = new Button("Livros");
 	private Button botaoEmprestimos = new Button("Emprestimos");
@@ -44,6 +46,10 @@ public class TelaMenuPrincipal {
 		titulo = new Titulo(labelTitulo);
 		titulo.getStyleClass().add("boxTituloPrincipal");
 		
+		labelTituloDeNavegacao.setTranslateX(550);
+		labelTituloDeNavegacao.getStyleClass().add("tituloNavegacao");
+		labelTituloDeNavegacao.setMaxSize(210, 25);
+		
 		botaoUsuarios.setTranslateX(490);
 		botaoUsuarios.setMaxSize(300, 50);
 		botaoUsuarios.getStyleClass().add("botoesMenuPrincipal");
@@ -60,17 +66,18 @@ public class TelaMenuPrincipal {
 	
 	private void adicionarElementosNaTela() {
 		gridPaneMenuPrincipal.add(titulo, 0, 0);
-		gridPaneMenuPrincipal.add(botaoUsuarios, 0, 2);
-		gridPaneMenuPrincipal.add(botaoLivros, 0, 4);
-		gridPaneMenuPrincipal.add(botaoEmprestimos, 0, 6);
+		gridPaneMenuPrincipal.add(labelTituloDeNavegacao, 0, 2);
+		gridPaneMenuPrincipal.add(botaoUsuarios, 0, 4);
+		gridPaneMenuPrincipal.add(botaoLivros, 0, 6);
+		gridPaneMenuPrincipal.add(botaoEmprestimos, 0, 8);
 
 	}
 	
 	private void criarGrid() {
 		gridPaneMenuPrincipal.getColumnConstraints().add(criarColuna(100));
 		gridPaneMenuPrincipal.getRowConstraints()
-			.addAll(criarLinha(9), criarLinha(15), criarLinha(8), criarLinha(10), 
-				criarLinha(8), criarLinha(10), criarLinha(8));
+			.addAll(criarLinha(9), criarLinha(6), criarLinha(9), criarLinha(5), 
+					criarLinha(8), criarLinha(10), criarLinha(8), criarLinha(10), criarLinha(8));
 	}
 	
 	private RowConstraints criarLinha(double heigth) {
