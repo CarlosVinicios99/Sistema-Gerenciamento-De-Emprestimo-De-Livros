@@ -93,7 +93,7 @@ public class TelaMenuEmprestimo {
 	
 	private void adicionarEventoBotaoDevolucao() {
 		botaoDevolucao.setOnAction(e -> {
-			//new TelaDeRealizarDevolucao(stage);
+			new TelaRealizacaoDeDevolucao(stage);
 		});
 	}
 	
