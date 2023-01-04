@@ -22,6 +22,7 @@ public class TelaMenuPrincipal {
 	private Button botaoUsuarios = new Button("Usuarios");
 	private Button botaoLivros = new Button("Livros");
 	private Button botaoEmprestimos = new Button("Emprestimos");
+	private Button botaoSair = new Button("Sair");
 	
 	public TelaMenuPrincipal(Stage stage) {
 		this.stage = stage;
@@ -31,6 +32,7 @@ public class TelaMenuPrincipal {
 		adicionarEventoBotaoUsuarios();
 		adicionarEventoBotaoLivros();
 		adicionarEventoBotaoEmprestimos();
+		adicionarEventoBotaoSair();
 		exibirCena();
 	}
 	
@@ -62,6 +64,10 @@ public class TelaMenuPrincipal {
 		botaoEmprestimos.setMaxSize(300, 50);
 		botaoEmprestimos.getStyleClass().add("botoesMenuPrincipal");
 		
+		botaoSair.setTranslateX(490);
+		botaoSair.setMaxSize(300, 50);
+		botaoSair.getStyleClass().add("botoesMenuPrincipal");
+		
 	}
 	
 	private void adicionarElementosNaTela() {
@@ -70,14 +76,14 @@ public class TelaMenuPrincipal {
 		gridPaneMenuPrincipal.add(botaoUsuarios, 0, 4);
 		gridPaneMenuPrincipal.add(botaoLivros, 0, 6);
 		gridPaneMenuPrincipal.add(botaoEmprestimos, 0, 8);
-
+		gridPaneMenuPrincipal.add(botaoSair, 0, 10);
 	}
 	
 	private void criarGrid() {
 		gridPaneMenuPrincipal.getColumnConstraints().add(criarColuna(100));
 		gridPaneMenuPrincipal.getRowConstraints()
-			.addAll(criarLinha(9), criarLinha(6), criarLinha(9), criarLinha(5), 
-					criarLinha(8), criarLinha(10), criarLinha(8), criarLinha(10), criarLinha(8));
+			.addAll(criarLinha(9), criarLinha(6), criarLinha(9), criarLinha(5), criarLinha(8), 
+				criarLinha(10), criarLinha(8), criarLinha(10), criarLinha(8), criarLinha(10), criarLinha(8));
 	}
 	
 	private RowConstraints criarLinha(double heigth) {
@@ -115,6 +121,12 @@ public class TelaMenuPrincipal {
 	private void adicionarEventoBotaoEmprestimos() {
 		botaoEmprestimos.setOnAction(e -> {
 			new TelaMenuEmprestimo(stage);
+		});
+	}
+	
+	private void adicionarEventoBotaoSair() {
+		botaoSair.setOnAction(e -> {
+			System.exit(0);
 		});
 	}
 }
