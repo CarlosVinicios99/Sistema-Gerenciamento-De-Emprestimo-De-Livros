@@ -87,7 +87,7 @@ public class TelaMenuEmprestimo {
 	
 	private void adicionarEventoBotaoEmprestimo() {
 		botaoEmprestimo.setOnAction(e -> {
-			//new TelaDeRealizarEmprestimo(stage);
+			new TelaRealizacaoDeEmprestimo(stage);
 		});
 	}
 	

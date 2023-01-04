@@ -1,5 +1,11 @@
 package app.view;
 
-public class TelaRealizacaoDeDevolucao {
+import javafx.stage.Stage;
 
+public class TelaRealizacaoDeDevolucao {
+	
+	public TelaRealizacaoDeDevolucao(Stage stage) {
+		
+	}
+	
 }
