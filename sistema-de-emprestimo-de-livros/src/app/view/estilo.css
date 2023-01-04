@@ -35,6 +35,10 @@
 	-fx-background-radius: 5px;
 }
 
+.tituloNavegacao{
+	-fx-font-size: 25px;
+}
+
 .telasDeMenu{
 	-fx-font-size: 17px;
 	-fx-background-color: #DCE2ED;
