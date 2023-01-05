@@ -9,16 +9,16 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 
-public class JanelaDeConfirmacao {
+public abstract class JanelaDeConfirmacao {
 	
-	private Stage stageJanela = new Stage();
-	private Stage proximoStage = new Stage();
+	protected Stage stageJanela = new Stage();
+	protected Stage proximoStage = new Stage();
 	private Scene cenaConfirmacao;
 	private String CSS = getClass().getResource("/app/view/estilo.css").toExternalForm();
 	private GridPane gridPaneJanelaDeConfirmacao = new GridPane();
 	
 	private Label labelMensagem = new Label();
-	private Button botaoOk = new Button("Ok");
+	protected Button botaoOk = new Button("Ok");
 
 	public JanelaDeConfirmacao(String mensagem, Stage stage) {
 		this.proximoStage = stage;
@@ -26,7 +26,6 @@ public class JanelaDeConfirmacao {
 		criarGrid();
 		configurarElementosVisuais();
 		adicionarElementosNaTela();
-		adicionarEventoBotaoOk();
 		exibirCena();
 	}
 	
@@ -68,12 +67,7 @@ public class JanelaDeConfirmacao {
 		gridPaneJanelaDeConfirmacao.add(botaoOk, 0, 3);
 	}
 	
-	private void adicionarEventoBotaoOk() {
-		botaoOk.setOnAction(e -> {
-			stageJanela.close();
-			new TelaMenuPrincipal(proximoStage);
-		});
-	}
+	public abstract void adicionarEventoBotaoOk();
 	
 	private void exibirCena() {
 		cenaConfirmacao = new Scene(gridPaneJanelaDeConfirmacao, 600, 400);
