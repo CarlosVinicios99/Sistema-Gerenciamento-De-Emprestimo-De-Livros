@@ -143,9 +143,16 @@ public class TelaCadastroDeUsuario {
 			
 			Usuario usuario = new Usuario(matricula, nome, cpf, email, senha);
 			DAO.iniciarConexao();
-			DAO.inserirUsuario(usuario);
+			
+			if(DAO.inserirUsuario(usuario)) {
+				new JanelaDeConfirmacaoUsuario("Usuario cadastrado com sucesso!", stage);
+			}
+			else {
+				//new JanelaDeExcecaoUsuario("Usuario nao cadastrado, tente novamente!", stage);
+			}
+			
 			DAO.fecharConexao();
-			new JanelaDeConfirmacaoCadastroDeUsuario("Usuario cadastrado com sucesso!", stage);
+			
 		});
 	}
 	

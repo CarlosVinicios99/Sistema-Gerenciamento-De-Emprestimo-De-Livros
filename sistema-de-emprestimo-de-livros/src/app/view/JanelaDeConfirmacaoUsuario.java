@@ -2,9 +2,9 @@ package app.view;
 
 import javafx.stage.Stage;
 
-public class JanelaDeConfirmacaoCadastroDeUsuario extends JanelaDeConfirmacao{
+public class JanelaDeConfirmacaoUsuario extends JanelaDeConfirmacao{
 	
-	public JanelaDeConfirmacaoCadastroDeUsuario(String mensagem, Stage proximoStage) {
+	public JanelaDeConfirmacaoUsuario(String mensagem, Stage proximoStage) {
 		super(mensagem, proximoStage);
 		adicionarEventoBotaoOk();
 	}
