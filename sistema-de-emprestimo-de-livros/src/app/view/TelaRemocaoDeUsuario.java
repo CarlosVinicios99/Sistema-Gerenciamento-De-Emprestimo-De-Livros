@@ -115,6 +115,9 @@ public class TelaRemocaoDeUsuario {
 			if(DAO.excluirUsuario(usuario)) {
 				new JanelaDeConfirmacaoUsuario("Usuario removido com sucesso", stage);
 			}
+			else {
+				new JanelaDeExcecaoUsuario("Usuario nao encontrado, verifique os dados e tente novamente", stage);
+			}
 	
 			DAO.fecharConexao();
 		});

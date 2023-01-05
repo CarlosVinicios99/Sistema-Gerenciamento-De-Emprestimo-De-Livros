@@ -148,7 +148,7 @@ public class TelaCadastroDeUsuario {
 				new JanelaDeConfirmacaoUsuario("Usuario cadastrado com sucesso!", stage);
 			}
 			else {
-				//new JanelaDeExcecaoUsuario("Usuario nao cadastrado, tente novamente!", stage);
+				new JanelaDeExcecaoUsuario("Usuario nao cadastrado, tente novamente!", stage);
 			}
 			
 			DAO.fecharConexao();
