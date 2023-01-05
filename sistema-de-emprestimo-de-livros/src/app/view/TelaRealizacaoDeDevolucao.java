@@ -101,11 +101,10 @@ public class TelaRealizacaoDeDevolucao {
 			DAO.iniciarConexao();
 			Livro livro = DAO.consultarLivroPorCodigo(labelCodigo.getText());
 			if(livro != null) {
-				DAO.excluirLivro(livro);
-				//livro devolvido!
+				new TelaUsuarioDevolucao(stage, livro);
 			}
 			else {
-				//livro nao encontrado
+				new JanelaDeExcecaoDevolucao("Livro nao encontrado", stage);
 			}
 			DAO.fecharConexao();
 		});
