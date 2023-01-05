@@ -30,7 +30,7 @@ public class TelaCadastroDeUsuario {
 	private PasswordField campoSenha = new PasswordField();
 	private Label labelNome = new Label("Nome: ");
 	private Label labelCpf = new Label("CPF: ");
-	private Label labelMatricula = new Label("Matricula: ");
+	private Label labelMatricula = new Label("Matrícula: ");
 	private Label labelEmail = new Label("E-mail: ");
 	private Label labelSenha = new Label("Senha: ");
 	private Button botaoCadastrar = new Button("Cadastrar");
@@ -69,7 +69,7 @@ public class TelaCadastroDeUsuario {
 	}
 	
 	private void configurarElementosVisuais() {
-		stage.setTitle("Emprestimos De Livros");
+		stage.setTitle("Empréstimos De Livros");
 		stage.setResizable(false);
 		gridPaneCadastroDeUsuario.setAlignment(Pos.TOP_CENTER);
 		gridPaneCadastroDeUsuario.getStyleClass().add("telasDeMenu");

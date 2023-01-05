@@ -17,8 +17,8 @@ public class TelaMenuUsuario {
 	private Titulo titulo;
 	private String CSS = getClass().getResource("/app/view/estilo.css").toExternalForm();
 	private Label labelTitulo = new Label("Universidade Federal Fluminense");
-	private Button botaoCadastrar = new Button("Cadastrar Usuario");
-	private Button botaoRemover = new Button("Remover Usuario");
+	private Button botaoCadastrar = new Button("Cadastrar Usuário");
+	private Button botaoRemover = new Button("Remover Usuário");
 	private Button botaoVoltar = new Button("Voltar");
 	
 	public TelaMenuUsuario(Stage stage) {
@@ -54,7 +54,7 @@ public class TelaMenuUsuario {
 	}
 	
 	private void configurarElementosVisuais(){
-		stage.setTitle("Emprestimos De Livros");
+		stage.setTitle("Empréstimos De Livros");
 		stage.setResizable(false);
 		gridPaneMenuUsuario.setAlignment(Pos.TOP_CENTER);
 		gridPaneMenuUsuario.getStyleClass().add("telasDeMenu");

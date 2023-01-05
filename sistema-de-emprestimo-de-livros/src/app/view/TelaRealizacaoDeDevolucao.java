@@ -21,8 +21,8 @@ public class TelaRealizacaoDeDevolucao {
 	private String CSS = getClass().getResource("/app/view/estilo.css").toExternalForm();
 	private Label labelTitulo = new Label("Universidade Federal Fluminense");
 	
-	private Label labelTituloDeNavegacao = new Label("Devolucao De Livro");
-	private Label labelCodigo = new Label("Codigo: ");
+	private Label labelTituloDeNavegacao = new Label("Devolução De Livro");
+	private Label labelCodigo = new Label("Código: ");
 	private TextField campoCodigo = new TextField();
 	private Button botaoCancelar = new Button("Cancelar");
 	private Button botaoConfirmar = new Button("Confirmar");
@@ -59,7 +59,7 @@ public class TelaRealizacaoDeDevolucao {
 	}
 	
 	private void configurarElementosVisuais() {
-		stage.setTitle("Emprestimos De Livros");
+		stage.setTitle("Empréstimos De Livros");
 		stage.setResizable(false);
 		gridPaneEmprestimo.setAlignment(Pos.TOP_CENTER);
 		gridPaneEmprestimo.getStyleClass().add("telasDeMenu");

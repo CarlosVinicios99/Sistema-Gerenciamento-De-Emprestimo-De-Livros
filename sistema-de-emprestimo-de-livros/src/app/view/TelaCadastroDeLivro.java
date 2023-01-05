@@ -27,11 +27,11 @@ public class TelaCadastroDeLivro {
 	private TextField campoDescricao = new TextField();
 	private TextField campoCodigo = new TextField();
 	private TextField campoProprietario = new TextField();
-	private Label labelTituloLivro = new Label("Titulo: ");
+	private Label labelTituloLivro = new Label("Título: ");
 	private Label labelAutor = new Label("Autor: ");
-	private Label labelDescricao = new Label("Descricao: ");
-	private Label labelCodigo = new Label("Codigo: ");
-	private Label labelProprietario = new Label("Proprietario: ");
+	private Label labelDescricao = new Label("Descrição: ");
+	private Label labelCodigo = new Label("Código: ");
+	private Label labelProprietario = new Label("Proprietário: ");
 	private Button botaoCadastrar = new Button("Cadastrar");
 	private Button botaoCancelar = new Button("Cancelar");
 	
@@ -68,7 +68,7 @@ public class TelaCadastroDeLivro {
 	}
 	
 	private void configurarElementosVisuais() {
-		stage.setTitle("Emprestimos De Livros");
+		stage.setTitle("Empréstimos De Livros");
 		stage.setResizable(false);
 		gridPaneCadastroDeLivro.setAlignment(Pos.TOP_CENTER);
 		gridPaneCadastroDeLivro.getStyleClass().add("telasDeMenu");

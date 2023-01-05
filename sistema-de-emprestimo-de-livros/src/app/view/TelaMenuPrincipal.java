@@ -19,9 +19,9 @@ public class TelaMenuPrincipal {
 	private Label labelTitulo = new Label("Universidade Federal Fluminense");
 	
 	private Label labelTituloDeNavegacao = new Label("Bem-Vindo(a)!");
-	private Button botaoUsuarios = new Button("Usuarios");
+	private Button botaoUsuarios = new Button("Usuários");
 	private Button botaoLivros = new Button("Livros");
-	private Button botaoEmprestimos = new Button("Emprestimos");
+	private Button botaoEmprestimos = new Button("Empréstimos");
 	private Button botaoSair = new Button("Sair");
 	
 	public TelaMenuPrincipal(Stage stage) {
@@ -38,7 +38,7 @@ public class TelaMenuPrincipal {
 	
 	
 	private void configurarElementosVisuais() {
-		stage.setTitle("Emprestimos De Livros");
+		stage.setTitle("Empréstimos De Livros");
 		stage.setResizable(false);
 		gridPaneMenuPrincipal.setAlignment(Pos.TOP_CENTER);
 		gridPaneMenuPrincipal.getStyleClass().add("telasDeMenu");

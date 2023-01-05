@@ -59,7 +59,7 @@ public class TelaRemocaoDeLivro {
 	}
 	
 	private void configurarElementosVisuais() {
-		stage.setTitle("Emprestimos De Livros");
+		stage.setTitle("Empréstimos De Livros");
 		stage.setResizable(false);
 		gridPaneRemocaoDeLivro.setAlignment(Pos.TOP_CENTER);
 		gridPaneRemocaoDeLivro.getStyleClass().add("telasDeMenu");

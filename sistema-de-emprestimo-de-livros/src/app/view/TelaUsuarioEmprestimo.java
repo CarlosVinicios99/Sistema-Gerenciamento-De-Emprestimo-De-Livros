@@ -66,7 +66,7 @@ public class TelaUsuarioEmprestimo {
 	}
 	
 	private void configurarElementosVisuais() {
-		stage.setTitle("Emprestimos De Livros");
+		stage.setTitle("Empréstimos De Livros");
 		stage.setResizable(false);
 		gridPaneUsuarioEmprestimo.setAlignment(Pos.TOP_CENTER);
 		gridPaneUsuarioEmprestimo.getStyleClass().add("telasDeMenu");

@@ -17,8 +17,8 @@ public class TelaMenuEmprestimo {
 	private Titulo titulo;
 	private String CSS = getClass().getResource("/app/view/estilo.css").toExternalForm();
 	private Label labelTitulo = new Label("Universidade Federal Fluminense");
-	private Button botaoEmprestimo = new Button("Realizar Emprestimo");
-	private Button botaoDevolucao = new Button("Realizar Devolucao");
+	private Button botaoEmprestimo = new Button("Realizar Empréstimo");
+	private Button botaoDevolucao = new Button("Realizar Devolução");
 	private Button botaoVoltar = new Button("Voltar");
 	
 	public TelaMenuEmprestimo(Stage stage) {
@@ -54,7 +54,7 @@ public class TelaMenuEmprestimo {
 	}
 	
 	private void configurarElementosVisuais(){
-		stage.setTitle("Emprestimos De Livros");
+		stage.setTitle("Empréstimos De Livros");
 		stage.setResizable(false);
 		gridPaneMenuEmprestimo.setAlignment(Pos.TOP_CENTER);
 		gridPaneMenuEmprestimo.getStyleClass().add("telasDeMenu");

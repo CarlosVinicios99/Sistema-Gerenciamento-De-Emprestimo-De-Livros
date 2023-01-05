@@ -33,12 +33,9 @@
 	-fx-text-fill: white;
 	-fx-text-align: center;
 	-fx-background-radius: 5px;
-	-fx-background-shadow: 3px;
 }
 
 .botaoDeSubMenu:hover {
-	-fx-border: 5px;
-	-fx-border-color: #3cd7ed;
 	-fx-background-color: #2a2879;
 }
 

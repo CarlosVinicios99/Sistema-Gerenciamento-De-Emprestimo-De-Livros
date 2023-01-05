@@ -57,7 +57,7 @@ public class TelaDeLogin {
 	}
 	
 	private  void configurarElementosVisuais() {
-		stage.setTitle("Emprestimos De Livros");
+		stage.setTitle("Empréstimos De Livros");
 		stage.setResizable(false);
 		
 		gridPaneLogin.getStyleClass().add("telasDeMenu");
@@ -103,7 +103,7 @@ public class TelaDeLogin {
 			String senha = campoSenha.getText();
 			DAO.iniciarConexao();
 			boolean resultado = DAO.bibliotecarioExiste(cpf, senha);
-			System.out.println(resultado);
+	
 			if(resultado) {
 				DAO.fecharConexao();
 				new TelaMenuPrincipal(stage);

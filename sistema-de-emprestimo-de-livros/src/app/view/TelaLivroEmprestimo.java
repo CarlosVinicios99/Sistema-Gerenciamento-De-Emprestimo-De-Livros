@@ -19,14 +19,14 @@ public class TelaLivroEmprestimo {
 	private String CSS = getClass().getResource("/app/view/estilo.css").toExternalForm();
 	private Label labelTitulo = new Label("Universidade Federal Fluminense");
 	
-	private Label labelTituloDeNavegacao = new Label("Emprestimo De Livro");
+	private Label labelTituloDeNavegacao = new Label("Empréstimo De Livro");
 	private Livro livro;
 	
-	private Label labelTituloLivro = new Label("Titulo: ");
+	private Label labelTituloLivro = new Label("Título: ");
 	private Label labelAutor = new Label("Autor: ");
-	private Label labelDescricao = new Label("Descricao: ");
-	private Label labelCodigo = new Label("Codigo: ");
-	private Label labelProprietario = new Label("Proprietario: ");
+	private Label labelDescricao = new Label("Descrição: ");
+	private Label labelCodigo = new Label("Código: ");
+	private Label labelProprietario = new Label("Proprietário: ");
 	
 	private Button botaoCancelar = new Button("Cancelar");
 	private Button botaoConfirmar = new Button("Confirmar");
@@ -65,7 +65,7 @@ public class TelaLivroEmprestimo {
 	}
 	
 	private void configurarElementosVisuais() {
-		stage.setTitle("Emprestimos De Livros");
+		stage.setTitle("Empréstimos De Livros");
 		stage.setResizable(false);
 		gridPaneLivroEmprestimo.setAlignment(Pos.TOP_CENTER);
 		gridPaneLivroEmprestimo.getStyleClass().add("telasDeMenu");

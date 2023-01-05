@@ -21,11 +21,11 @@ public class TelaRealizacaoDeEmprestimo {
 	private String CSS = getClass().getResource("/app/view/estilo.css").toExternalForm();
 	private Label labelTitulo = new Label("Universidade Federal Fluminense");
 	
-	private Label labelTituloDeNavegacao = new Label("Emprestimo De Livro");
+	private Label labelTituloDeNavegacao = new Label("Empréstimo De Livro");
 	private Label labelLivro = new Label("Livro: ");
 	private TextField campoLivro = new TextField();
 	private Button botaoCancelar = new Button("Cancelar");
-	private Button botaoAvancar = new Button("Avancar");
+	private Button botaoAvancar = new Button("Avançar");
 	
 	public TelaRealizacaoDeEmprestimo(Stage stage) {
 		this.stage = stage;
@@ -59,7 +59,7 @@ public class TelaRealizacaoDeEmprestimo {
 	}
 	
 	private void configurarElementosVisuais() {
-		stage.setTitle("Emprestimos De Livros");
+		stage.setTitle("Empréstimos De Livros");
 		stage.setResizable(false);
 		gridPaneEmprestimo.setAlignment(Pos.TOP_CENTER);
 		gridPaneEmprestimo.getStyleClass().add("telasDeMenu");
