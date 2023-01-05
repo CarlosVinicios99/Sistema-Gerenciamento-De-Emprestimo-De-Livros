@@ -101,7 +101,7 @@ public class TelaRealizacaoDeEmprestimo {
 			DAO.iniciarConexao();
 			Livro livro = DAO.consultarLivroPorTitulo(labelLivro.getText());
 			if(livro != null) {
-				//new TelaLivroEmprestimo(livro);
+				new TelaLivroEmprestimo(stage, livro);
 			}
 			else {
 				//livro nao encontrado
@@ -121,5 +121,4 @@ public class TelaRealizacaoDeEmprestimo {
 		cenaEmprestimo.getStylesheets().add(CSS);
 		stage.setScene(cenaEmprestimo);
 	}
-	
 }
