@@ -1,5 +1,6 @@
 package app.view;
 
+import app.model.entities.Emprestimo;
 import app.model.entities.Livro;
 import app.model.entities.Usuario;
 import app.repositories.DAO;
@@ -38,7 +39,7 @@ public class TelaUsuarioEmprestimo {
 		criarGrid();
 		configurarElementosVisuais();
 		adicionarElementosNaTela();
-		adicionarEventoBotaoRemover();
+		adicionarEventoBotaoConfirmar();
 		adicionarEventoBotaoCancelar();
 		exibirCena();
 	}
@@ -67,8 +68,8 @@ public class TelaUsuarioEmprestimo {
 	private void configurarElementosVisuais() {
 		stage.setTitle("Emprestimos De Livros");
 		stage.setResizable(false);
-		gridPaneRemocaoDeUsuario.setAlignment(Pos.TOP_CENTER);
-		gridPaneRemocaoDeUsuario.getStyleClass().add("telasDeMenu");
+		gridPaneUsuarioEmprestimo.setAlignment(Pos.TOP_CENTER);
+		gridPaneUsuarioEmprestimo.getStyleClass().add("telasDeMenu");
 		
 		labelTitulo.getStyleClass().add("tituloPrincipal");
 		titulo = new Titulo(labelTitulo);
@@ -91,49 +92,48 @@ public class TelaUsuarioEmprestimo {
 		botaoCancelar.setTranslateX(450);
 		botaoCancelar.setMaxSize(110, 30);
 		botaoCancelar.getStyleClass().add("botaoDeConfirmacao");
-		botaoRemover.setTranslateX(770);
-		botaoRemover.setMaxSize(110, 30);
-		botaoRemover.getStyleClass().add("botaoDeConfirmacao");
+		botaoConfirmar.setTranslateX(770);
+		botaoConfirmar.setMaxSize(110, 30);
+		botaoConfirmar.getStyleClass().add("botaoDeConfirmacao");
 
 	}
 	
 	private void adicionarElementosNaTela() {
-		gridPaneRemocaoDeUsuario.add(titulo, 0, 0);
-		gridPaneRemocaoDeUsuario.add(labelTituloDeNavegacao, 0, 2);
-		gridPaneRemocaoDeUsuario.add(labelCpf, 0, 4);
-		gridPaneRemocaoDeUsuario.add(campoCpf, 0, 4);
-		gridPaneRemocaoDeUsuario.add(labelSenha, 0, 6);
-		gridPaneRemocaoDeUsuario.add(campoSenha, 0, 6);
-		gridPaneRemocaoDeUsuario.add(botaoCancelar, 0, 8);
-		gridPaneRemocaoDeUsuario.add(botaoRemover, 0, 8);
+		gridPaneUsuarioEmprestimo.add(titulo, 0, 0);
+		gridPaneUsuarioEmprestimo.add(labelTituloDeNavegacao, 0, 2);
+		gridPaneUsuarioEmprestimo.add(labelCpf, 0, 4);
+		gridPaneUsuarioEmprestimo.add(campoCpf, 0, 4);
+		gridPaneUsuarioEmprestimo.add(labelSenha, 0, 6);
+		gridPaneUsuarioEmprestimo.add(campoSenha, 0, 6);
+		gridPaneUsuarioEmprestimo.add(botaoCancelar, 0, 8);
+		gridPaneUsuarioEmprestimo.add(botaoConfirmar, 0, 8);
 	}
 	
-	private void adicionarEventoBotaoRemover() {
-		botaoRemover.setOnAction(e -> {
-			String cpf = campoCpf.getText();
-			String senha = campoSenha.getText();
+	private void adicionarEventoBotaoConfirmar() {
+		botaoConfirmar.setOnAction(e -> {
 			DAO.iniciarConexao();
-			Usuario usuario = DAO.consultarUsuario(cpf, senha);
-			
+			Usuario usuario = DAO.consultarUsuario(campoCpf.getText(), campoSenha.getText());
 			if(usuario != null) {
-				DAO.excluirUsuario(usuario);
+				Emprestimo emprestimo = new Emprestimo(livro);
+				DAO.inserirEmprestimo(emprestimo, usuario.getId());
+				//telaDeConfirmacao e retorno ao menu de emprestimo
 			}
-			
+			else {
+				//usuario nao cadastrado;
+			}
 			DAO.fecharConexao();
-			new TelaMenuUsuario(stage);
-			
 		});
 	}
 	
 	private void adicionarEventoBotaoCancelar() {
 		botaoCancelar.setOnAction(e -> {
-			new TelaMenuUsuario(stage);
+			new TelaRealizacaoDeEmprestimo(stage);
 		});
 	}
 	
 	private void exibirCena() {
-		cenaRemocaoDeUsuario = new Scene(gridPaneRemocaoDeUsuario, 1300, 700);
-		cenaRemocaoDeUsuario.getStylesheets().add(CSS);
-		stage.setScene(cenaRemocaoDeUsuario);
+		cenaUsuarioEmprestimo = new Scene(gridPaneUsuarioEmprestimo, 1300, 700);
+		cenaUsuarioEmprestimo.getStylesheets().add(CSS);
+		stage.setScene(cenaUsuarioEmprestimo);
 	}
 }
