@@ -9,19 +9,19 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 
-public abstract class JanelaDeConfirmacao {
+public abstract class JanelaDeExcecao {
 	
 	protected Stage stageJanela = new Stage();
 	protected Stage proximoStage = new Stage();
-	private Scene cenaConfirmacao;
+	private Scene cenaExcecao;
 	private String CSS = getClass().getResource("/app/view/estilo.css").toExternalForm();
-	private GridPane gridPaneJanelaDeConfirmacao = new GridPane();
+	private GridPane gridPaneJanelaDeExcecao = new GridPane();
 	
 	private Label labelMensagem = new Label();
-	private Label simboloConfirmacao = new Label('\u2714' + "");
+	private Label simboloExcecao = new Label('\u274e' + "");
 	protected Button botaoOk = new Button("OK");
 
-	public JanelaDeConfirmacao(String mensagem, Stage stage) {
+	public JanelaDeExcecao(String mensagem, Stage stage) {
 		this.proximoStage = stage;
 		labelMensagem.setText(mensagem);
 		criarGrid();
@@ -31,8 +31,8 @@ public abstract class JanelaDeConfirmacao {
 	}
 	
 	private void criarGrid() {
-		gridPaneJanelaDeConfirmacao.getColumnConstraints().add(criarColuna(100));
-		gridPaneJanelaDeConfirmacao.getRowConstraints()
+		gridPaneJanelaDeExcecao.getColumnConstraints().add(criarColuna(100));
+		gridPaneJanelaDeExcecao.getRowConstraints()
 			.addAll(criarLinha(5), criarLinha(30), criarLinha(1), criarLinha(6), criarLinha(13), criarLinha(6));
 	}
 	
@@ -53,13 +53,13 @@ public abstract class JanelaDeConfirmacao {
 	private void configurarElementosVisuais() {
 		stageJanela.setTitle("Mensagem");
 		stageJanela.setResizable(false);
-		gridPaneJanelaDeConfirmacao.setAlignment(Pos.TOP_CENTER);
-		gridPaneJanelaDeConfirmacao.getStyleClass().add("janelaDeConfirmacao");
+		gridPaneJanelaDeExcecao.setAlignment(Pos.TOP_CENTER);
+		gridPaneJanelaDeExcecao.getStyleClass().add("janelaDeExcecao");
 	
 		
 		labelMensagem.setTranslateX(100);
-		simboloConfirmacao.setTranslateX(245);
-		simboloConfirmacao.getStyleClass().add("simboloConfirmacao");
+		simboloExcecao.setTranslateX(245);
+		simboloExcecao.getStyleClass().add("simboloExcecao");
 		
 		botaoOk.setTranslateX(215);
 		botaoOk.setMaxSize(70, 30);
@@ -67,18 +67,18 @@ public abstract class JanelaDeConfirmacao {
 	}
 	
 	private void adicionarElementosNaTela() {
-		gridPaneJanelaDeConfirmacao.add(labelMensagem, 0, 1);
-		gridPaneJanelaDeConfirmacao.add(simboloConfirmacao, 0, 3);
-		gridPaneJanelaDeConfirmacao.add(botaoOk, 0, 5);
+		gridPaneJanelaDeExcecao.add(labelMensagem, 0, 1);
+		gridPaneJanelaDeExcecao.add(simboloExcecao, 0, 3);
+		gridPaneJanelaDeExcecao.add(botaoOk, 0, 5);
 	}
 	
 	public abstract void adicionarEventoBotaoOk();
 	
 	private void exibirCena() {
-		cenaConfirmacao = new Scene(gridPaneJanelaDeConfirmacao, 500, 250);
-		cenaConfirmacao.getStylesheets().add(CSS);
-		stageJanela.setScene(cenaConfirmacao);
+		cenaExcecao = new Scene(gridPaneJanelaDeExcecao, 500, 250);
+		cenaExcecao.getStylesheets().add(CSS);
+		stageJanela.setScene(cenaExcecao);
 		stageJanela.show();
 	}
-
+	
 }

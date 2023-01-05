@@ -67,3 +67,16 @@
 	-fx-font-size: 25px;
 }
 
+.janelaDeExcecao{
+	-fx-font-size: 16px;
+	-fx-text-fill: white;
+	-fx-background-color: #ffb8b8;
+	-fx-text-align: center;
+}
+
+simboloExcecao{
+	-fx-font-size: 25px;
+}
+
+
+
