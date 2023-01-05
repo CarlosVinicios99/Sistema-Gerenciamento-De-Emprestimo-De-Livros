@@ -104,7 +104,7 @@ public class TelaRealizacaoDeEmprestimo {
 				new TelaLivroEmprestimo(stage, livro);
 			}
 			else {
-				//livro nao encontrado
+				new JanelaDeExcecaoLivroEmprestimo("Livro nao cadastrado", stage);
 			}
 			DAO.fecharConexao();
 		});

@@ -115,11 +115,15 @@ public class TelaUsuarioEmprestimo {
 			Usuario usuario = DAO.consultarUsuario(campoCpf.getText(), campoSenha.getText());
 			if(usuario != null) {
 				Emprestimo emprestimo = new Emprestimo(livro);
-				DAO.inserirEmprestimo(emprestimo, usuario.getId());
-				//telaDeConfirmacao e retorno ao menu de emprestimo
+				if(DAO.inserirEmprestimo(emprestimo, usuario.getId())) {
+					new JanelaDeConfirmacaoEmprestimo("Emprestimo registrado!", stage);
+				}
+				else {
+					new JanelaDeExcecaoEmprestimo("Emprestimo nao registrado", stage);
+				}
 			}
 			else {
-				//usuario nao cadastrado;
+				new JanelaDeExcecaoUsuarioEmprestimo("Usuario nao cadastrado!", stage, livro);
 			}
 			DAO.fecharConexao();
 		});
