@@ -6,6 +6,7 @@ public class JanelaDeConfirmacaoCadastroDeUsuario extends JanelaDeConfirmacao{
 	
 	public JanelaDeConfirmacaoCadastroDeUsuario(String mensagem, Stage proximoStage) {
 		super(mensagem, proximoStage);
+		adicionarEventoBotaoOk();
 	}
 	
 	@Override

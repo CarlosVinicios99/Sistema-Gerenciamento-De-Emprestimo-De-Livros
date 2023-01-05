@@ -18,7 +18,8 @@ public abstract class JanelaDeConfirmacao {
 	private GridPane gridPaneJanelaDeConfirmacao = new GridPane();
 	
 	private Label labelMensagem = new Label();
-	protected Button botaoOk = new Button("Ok");
+	private Label simboloConfirmacao = new Label('\u2714' + "");
+	protected Button botaoOk = new Button("OK");
 
 	public JanelaDeConfirmacao(String mensagem, Stage stage) {
 		this.proximoStage = stage;
@@ -32,7 +33,7 @@ public abstract class JanelaDeConfirmacao {
 	private void criarGrid() {
 		gridPaneJanelaDeConfirmacao.getColumnConstraints().add(criarColuna(100));
 		gridPaneJanelaDeConfirmacao.getRowConstraints()
-			.addAll(criarLinha(5), criarLinha(30), criarLinha(5), criarLinha(6));
+			.addAll(criarLinha(5), criarLinha(30), criarLinha(1), criarLinha(6), criarLinha(13), criarLinha(6));
 	}
 	
 	private RowConstraints criarLinha(double heigth) {
@@ -53,24 +54,28 @@ public abstract class JanelaDeConfirmacao {
 		stageJanela.setTitle("Mensagem");
 		stageJanela.setResizable(false);
 		gridPaneJanelaDeConfirmacao.setAlignment(Pos.TOP_CENTER);
-		//gridPaneJanelaDeConfirmacao.getStyleClass().add();
+		gridPaneJanelaDeConfirmacao.getStyleClass().add("janelaDeConfirmacao");
 	
 		
-		labelMensagem.setTranslateX(30);
-		botaoOk.setTranslateX(265);
+		labelMensagem.setTranslateX(100);
+		simboloConfirmacao.setTranslateX(245);
+		simboloConfirmacao.getStyleClass().add("simboloConfirmacao");
+		
+		botaoOk.setTranslateX(215);
 		botaoOk.setMaxSize(70, 30);
 		botaoOk.getStyleClass().add("botaoDeConfirmacao");
 	}
 	
 	private void adicionarElementosNaTela() {
 		gridPaneJanelaDeConfirmacao.add(labelMensagem, 0, 1);
-		gridPaneJanelaDeConfirmacao.add(botaoOk, 0, 3);
+		gridPaneJanelaDeConfirmacao.add(simboloConfirmacao, 0, 3);
+		gridPaneJanelaDeConfirmacao.add(botaoOk, 0, 5);
 	}
 	
 	public abstract void adicionarEventoBotaoOk();
 	
 	private void exibirCena() {
-		cenaConfirmacao = new Scene(gridPaneJanelaDeConfirmacao, 600, 400);
+		cenaConfirmacao = new Scene(gridPaneJanelaDeConfirmacao, 500, 250);
 		cenaConfirmacao.getStylesheets().add(CSS);
 		stageJanela.setScene(cenaConfirmacao);
 		stageJanela.show();

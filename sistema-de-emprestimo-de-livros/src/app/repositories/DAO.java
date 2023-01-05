@@ -40,7 +40,7 @@ public class DAO {
 	//metodos de insercao-----------------------------------------------------------------------------------------
 	
 	//TESTADO
-	public static void inserirUsuario(Usuario usuario) {
+	public static boolean inserirUsuario(Usuario usuario) {
 		String SQL = 
 			""" 
 				INSERT INTO usuarios (matricula, nome, email, senha, cpf) VALUES (?, ?, ?, ?, ?);
@@ -52,16 +52,17 @@ public class DAO {
 				preparedStatement.setString(3, usuario.getEmail());
 				preparedStatement.setString(4, usuario.getSenha());
 				preparedStatement.setString(5, usuario.getCpf());
-				preparedStatement.execute();
+				return preparedStatement.execute();
 			}
 			
 			catch(SQLException e) {
 				System.out.println(e.getMessage());
+				return false;
 			}
 	}
 	
 	//TESTADO
-	public static void inserirLivro(Livro livro) {
+	public static boolean inserirLivro(Livro livro) {
 		String SQL =
 			"""
 				INSERT INTO livros (codigo, titulo, descricao, autor, proprietario, disponibilidade)
@@ -76,16 +77,17 @@ public class DAO {
 			preparedStatement.setString(4, livro.getAutor());
 			preparedStatement.setString(5, livro.getProprietario());
 			preparedStatement.setBoolean(6, livro.getDisponibilidade());
-			preparedStatement.execute();
+			return preparedStatement.execute();
 		}
 		
 		catch(SQLException e) {
 			System.out.println(e.getMessage());
+			return false;
 		}
 			
 	}
 	//TESTADO
-	public static void inserirEmprestimo(Emprestimo emprestimo, int idUsuario) {
+	public static boolean inserirEmprestimo(Emprestimo emprestimo, int idUsuario) {
 		String SQL = 
 			"""
 				INSERT INTO emprestimos (data_inicial, data_final, id_livro)
@@ -99,16 +101,19 @@ public class DAO {
 			preparedStatement.setInt(3, emprestimo.getLivro().getId());
 			preparedStatement.execute();
 			atualizarDisponibilidadeDeLivro(emprestimo.getLivro());
+			
 		}
 		
 		catch(SQLException e) {
 			System.out.println(e.getMessage());
+			return false;
 		}
 		
 		Emprestimo emprestimoConsulta = 
 			consultarEmprestimo(emprestimo.getLivro());
 
 		inserirUsuarioEmprestimo(idUsuario, emprestimoConsulta.getId());
+		return true;
 	}
 	
 	//TESTADO
@@ -385,7 +390,7 @@ public class DAO {
 	
 	//Metodos de exclusao------------------------------------------------------------------------------------------
 	
-	public static void excluirUsuario(Usuario usuario) {
+	public static boolean excluirUsuario(Usuario usuario) {
 		if(usuario.getEmprestimos().isEmpty()) {
 			String SQL =
 				"""
@@ -395,32 +400,40 @@ public class DAO {
 			try {
 				preparedStatement = conexao.prepareStatement(SQL);
 				preparedStatement.setInt(1, usuario.getId());
-				preparedStatement.execute();
+				return preparedStatement.execute();
 			}
 			catch(SQLException e) {
 				System.out.println(e.getMessage());
+				return false;
 			}
 		}
+		return false;
 	}
 	
-	public static void excluirEmprestimo(int idUsuario, Livro livro) {
+	public static boolean excluirEmprestimo(int idUsuario, Livro livro) {
 		atualizarDisponibilidadeDeLivro(livro);
 		Emprestimo emprestimo = consultarEmprestimo(livro);
-		excluirEmprestimoDeUsuario(emprestimo.getId(), idUsuario);
 		
-		String SQL = 
-			"""
-				DELETE FROM emprestimos WHERE id = ?;	
-			""";
+		if(emprestimo != null) {
+			excluirEmprestimoDeUsuario(emprestimo.getId(), idUsuario);
 		
-		try {
-			preparedStatement = conexao.prepareStatement(SQL);
-			preparedStatement.setInt(1, emprestimo.getId());
-			preparedStatement.execute();
+			String SQL = 
+					"""
+						DELETE FROM emprestimos WHERE id = ?;	
+					""";
+		
+			try {
+				preparedStatement = conexao.prepareStatement(SQL);
+				preparedStatement.setInt(1, emprestimo.getId());
+				preparedStatement.execute();
+				return true;
+			}
+			catch(SQLException e) {
+				System.out.println(e.getMessage());
+				return false;
+			}
 		}
-		catch(SQLException e) {
-			System.out.println(e.getMessage());
-		}
+		return false;
 	}	
 	
 	private static void excluirEmprestimoDeUsuario(int idEmprestimo, int idUsuario) {
@@ -441,7 +454,7 @@ public class DAO {
 		
 	}
 	
-	public static void excluirLivro(Livro livro) {
+	public static boolean excluirLivro(Livro livro) {
 		if(livro.getDisponibilidade()) {
 			
 			String SQL = 
@@ -453,12 +466,15 @@ public class DAO {
 				preparedStatement = conexao.prepareStatement(SQL);
 				preparedStatement.setInt(1, livro.getId());
 				preparedStatement.execute();
+				return true;
 			}
 	
 			catch(SQLException e) {
 				System.out.println(e.getMessage());
+				return false;
 			}
 		}
+		return false;
 	}
 	
 }

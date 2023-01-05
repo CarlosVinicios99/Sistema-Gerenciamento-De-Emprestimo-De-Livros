@@ -145,7 +145,7 @@ public class TelaCadastroDeUsuario {
 			DAO.iniciarConexao();
 			DAO.inserirUsuario(usuario);
 			DAO.fecharConexao();
-			new TelaMenuUsuario(stage);
+			new JanelaDeConfirmacaoCadastroDeUsuario("Usuario cadastrado com sucesso!", stage);
 		});
 	}
 	

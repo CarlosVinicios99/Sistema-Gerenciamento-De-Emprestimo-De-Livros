@@ -49,7 +49,6 @@
 .telasDeMenu{
 	-fx-font-size: 17px;
 	-fx-background-color: #DCE2ED;
-	-fx-background-color: #DCE2ED;
 }
 
 .botaoDeConfirmacao{
@@ -58,5 +57,16 @@
 	-fx-background-color: #4258d7;
 	-fx-text-align: center;
 	-fx-background-radius: 5px;
+}
+
+.janelaDeConfirmacao{
+	-fx-font-size: 16px;
+	-fx-text-fill: white;
+	-fx-background-color: #c7ffc5;
+	-fx-text-align: center;
+}
+
+.simboloConfirmacao{
+	-fx-font-size: 25px;
 }
 
