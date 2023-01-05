@@ -142,9 +142,15 @@ public class TelaCadastroDeLivro {
 			
 			Livro livro = new Livro(codigo, tituloDoLivro, descricao, autor, proprietario);
 			DAO.iniciarConexao();
-			DAO.inserirLivro(livro);
+			
+			if(DAO.inserirLivro(livro)) {
+				new JanelaDeConfirmacaoLivro("Livro cadastrado com sucesso", stage);
+			}
+			else {
+				new JanelaDeExcecaoLivro("Livro nao cadastrado, Tente novamente", stage);
+			}
+			
 			DAO.fecharConexao();
-			new TelaMenuLivro(stage);
 		});
 	}
 	
