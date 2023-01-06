@@ -1,5 +1,8 @@
 package app.view;
 
+import app.view.emprestimo.TelaMenuEmprestimo;
+import app.view.livro.TelaMenuLivro;
+import app.view.usuario.TelaMenuUsuario;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;

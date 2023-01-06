@@ -1,10 +1,10 @@
-package app.view;
+package app.view.emprestimo;
 
 import javafx.stage.Stage;
 
-public class JanelaDeExcecaoDevolucao extends JanelaDeExcecao{
+public class JanelaDeConfirmacaoEmprestimo extends JanelaDeConfirmacao {
 	
-	public JanelaDeExcecaoDevolucao(String mensagem, Stage proximoStage) {
+	public JanelaDeConfirmacaoEmprestimo(String mensagem, Stage proximoStage) {
 		super(mensagem, proximoStage);
 		adicionarEventoBotaoOk();
 	}
@@ -16,5 +16,4 @@ public class JanelaDeExcecaoDevolucao extends JanelaDeExcecao{
 			new TelaMenuEmprestimo(proximoStage);
 		});
 	}
-	
 }

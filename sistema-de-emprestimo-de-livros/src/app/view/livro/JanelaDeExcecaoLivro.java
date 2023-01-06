@@ -1,10 +1,11 @@
-package app.view;
+package app.view.livro;
 
+import app.view.JanelaDeExcecao;
 import javafx.stage.Stage;
 
-public class JanelaDeConfirmacaoLivro extends JanelaDeConfirmacao{
+public class JanelaDeExcecaoLivro extends JanelaDeExcecao{
 	
-	public JanelaDeConfirmacaoLivro(String mensagem, Stage proximoStage) {
+	public JanelaDeExcecaoLivro(String mensagem, Stage proximoStage) {
 		super(mensagem, proximoStage);
 		adicionarEventoBotaoOk();
 	}

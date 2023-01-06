@@ -1,7 +1,8 @@
- package app.view;
+package app.view.emprestimo;
 
 import app.model.entities.Livro;
 import app.repositories.DAO;
+import app.view.Titulo;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,7 +13,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 
-public class TelaRealizacaoDeDevolucao {
+public class TelaRealizacaoDeEmprestimo {
 	
 	private Stage stage = new Stage();
 	private GridPane gridPaneEmprestimo = new GridPane();
@@ -21,18 +22,18 @@ public class TelaRealizacaoDeDevolucao {
 	private String CSS = getClass().getResource("/app/view/estilo.css").toExternalForm();
 	private Label labelTitulo = new Label("Universidade Federal Fluminense");
 	
-	private Label labelTituloDeNavegacao = new Label("Devolução De Livro");
-	private Label labelCodigo = new Label("Código: ");
-	private TextField campoCodigo = new TextField();
+	private Label labelTituloDeNavegacao = new Label("Empréstimo De Livro");
+	private Label labelLivro = new Label("Livro: ");
+	private TextField campoLivro = new TextField();
 	private Button botaoCancelar = new Button("Cancelar");
-	private Button botaoConfirmar = new Button("Confirmar");
+	private Button botaoAvancar = new Button("Avançar");
 	
-	public TelaRealizacaoDeDevolucao(Stage stage) {
+	public TelaRealizacaoDeEmprestimo(Stage stage) {
 		this.stage = stage;
 		criarGrid();
 		configurarElementosVisuais();
 		adicionarElementosNaTela();
-		adicionarEventoBotaoConfirmar();
+		adicionarEventoBotaoAvancar();
 		adicionarEventoBotaoCancelar();
 		exibirCena();
 	}
@@ -73,38 +74,38 @@ public class TelaRealizacaoDeDevolucao {
 		labelTituloDeNavegacao.setMaxSize(320, 25);
 		labelTituloDeNavegacao.getStyleClass().add("tituloNavegacao");
 		
-		labelCodigo.setTranslateX(460);
-		labelCodigo.setMaxSize(80, 25);
-		campoCodigo.setTranslateX(550);
-		campoCodigo.setMaxSize(270, 30);
+		labelLivro.setTranslateX(460);
+		labelLivro.setMaxSize(70, 25);
+		campoLivro.setTranslateX(550);
+		campoLivro.setMaxSize(270, 30);
 		
 		botaoCancelar.setTranslateX(450);
 		botaoCancelar.setMaxSize(110, 30);
 		botaoCancelar.getStyleClass().add("botaoDeConfirmacao");
-		botaoConfirmar.setTranslateX(770);
-		botaoConfirmar.setMaxSize(110, 30);
-		botaoConfirmar.getStyleClass().add("botaoDeConfirmacao");
+		botaoAvancar.setTranslateX(770);
+		botaoAvancar.setMaxSize(110, 30);
+		botaoAvancar.getStyleClass().add("botaoDeConfirmacao");
 		
 	}
 	
 	private void adicionarElementosNaTela() {
 		gridPaneEmprestimo.add(titulo, 0, 0);
 		gridPaneEmprestimo.add(labelTituloDeNavegacao, 0, 2);
-		gridPaneEmprestimo.add(labelCodigo, 0, 4);
-		gridPaneEmprestimo.add(campoCodigo, 0, 4);
+		gridPaneEmprestimo.add(labelLivro, 0, 4);
+		gridPaneEmprestimo.add(campoLivro, 0, 4);
 		gridPaneEmprestimo.add(botaoCancelar, 0, 6);
-		gridPaneEmprestimo.add(botaoConfirmar, 0, 6);
+		gridPaneEmprestimo.add(botaoAvancar, 0, 6);
 	}
 	
-	private void adicionarEventoBotaoConfirmar() {
-		botaoConfirmar.setOnAction(e -> {
+	private void adicionarEventoBotaoAvancar() {
+		botaoAvancar.setOnAction(e -> {
 			DAO.iniciarConexao();
-			Livro livro = DAO.consultarLivroPorCodigo(campoCodigo.getText());
+			Livro livro = DAO.consultarLivroPorTitulo(campoLivro.getText());
 			if(livro != null) {
-				new TelaUsuarioDevolucao(stage, livro);
+				new TelaLivroEmprestimo(stage, livro);
 			}
 			else {
-				new JanelaDeExcecaoDevolucao("           Livro não encontrado!", stage);
+				new JanelaDeExcecaoLivroEmprestimo("        Livro não cadastrado", stage);
 			}
 			DAO.fecharConexao();
 		});
@@ -121,5 +122,4 @@ public class TelaRealizacaoDeDevolucao {
 		cenaEmprestimo.getStylesheets().add(CSS);
 		stage.setScene(cenaEmprestimo);
 	}
-	
 }

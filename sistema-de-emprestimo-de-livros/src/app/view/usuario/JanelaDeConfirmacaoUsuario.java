@@ -1,10 +1,11 @@
-package app.view;
+package app.view.usuario;
 
+import app.view.emprestimo.JanelaDeConfirmacao;
 import javafx.stage.Stage;
 
-public class JanelaDeExcecaoUsuario extends JanelaDeExcecao {
+public class JanelaDeConfirmacaoUsuario extends JanelaDeConfirmacao{
 	
-	public JanelaDeExcecaoUsuario(String mensagem, Stage proximoStage) {
+	public JanelaDeConfirmacaoUsuario(String mensagem, Stage proximoStage) {
 		super(mensagem, proximoStage);
 		adicionarEventoBotaoOk();
 	}

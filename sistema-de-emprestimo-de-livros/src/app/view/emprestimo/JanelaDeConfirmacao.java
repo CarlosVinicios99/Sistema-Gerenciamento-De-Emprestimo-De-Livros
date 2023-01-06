@@ -1,4 +1,4 @@
-package app.view;
+package app.view.emprestimo;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;

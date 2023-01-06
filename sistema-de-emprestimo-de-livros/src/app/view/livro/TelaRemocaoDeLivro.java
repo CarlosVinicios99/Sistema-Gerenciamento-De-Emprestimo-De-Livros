@@ -1,7 +1,8 @@
-package app.view;
+package app.view.livro;
 
 import app.model.entities.Livro;
 import app.repositories.DAO;
+import app.view.Titulo;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,36 +13,36 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 
-public class TelaRealizacaoDeEmprestimo {
+public class TelaRemocaoDeLivro {
 	
 	private Stage stage = new Stage();
-	private GridPane gridPaneEmprestimo = new GridPane();
-	private Scene cenaEmprestimo;
-	private Titulo titulo;
+	private Scene cenaRemocaoDeLivro;
 	private String CSS = getClass().getResource("/app/view/estilo.css").toExternalForm();
+	private Titulo titulo;
 	private Label labelTitulo = new Label("Universidade Federal Fluminense");
+	private GridPane gridPaneRemocaoDeLivro = new GridPane();
 	
-	private Label labelTituloDeNavegacao = new Label("Empréstimo De Livro");
-	private Label labelLivro = new Label("Livro: ");
-	private TextField campoLivro = new TextField();
+	private Label labelTituloDeNavegacao = new Label("Remover Livro");
+	private TextField campoCodigo = new TextField();;
+	private Label labelCodigo = new Label("Código: ");
+	private Button botaoRemover = new Button("Remover");
 	private Button botaoCancelar = new Button("Cancelar");
-	private Button botaoAvancar = new Button("Avançar");
 	
-	public TelaRealizacaoDeEmprestimo(Stage stage) {
+	public TelaRemocaoDeLivro(Stage stage) {
 		this.stage = stage;
 		criarGrid();
 		configurarElementosVisuais();
 		adicionarElementosNaTela();
-		adicionarEventoBotaoAvancar();
+		adicionarEventoBotaoRemover();
 		adicionarEventoBotaoCancelar();
 		exibirCena();
 	}
 	
 	private void criarGrid() {
-		gridPaneEmprestimo.getColumnConstraints().add(criarColuna(100));
-		gridPaneEmprestimo.getRowConstraints()
+		gridPaneRemocaoDeLivro.getColumnConstraints().add(criarColuna(100));
+		gridPaneRemocaoDeLivro.getRowConstraints()
 			.addAll(criarLinha(9), criarLinha(6), criarLinha(9), criarLinha(6), 
-				criarLinha(6), criarLinha(6), criarLinha(6));
+				criarLinha(6), criarLinha(6));
 	}
 	
 	private RowConstraints criarLinha(double heigth) {
@@ -61,50 +62,53 @@ public class TelaRealizacaoDeEmprestimo {
 	private void configurarElementosVisuais() {
 		stage.setTitle("Empréstimos De Livros");
 		stage.setResizable(false);
-		gridPaneEmprestimo.setAlignment(Pos.TOP_CENTER);
-		gridPaneEmprestimo.getStyleClass().add("telasDeMenu");
+		gridPaneRemocaoDeLivro.setAlignment(Pos.TOP_CENTER);
+		gridPaneRemocaoDeLivro.getStyleClass().add("telasDeMenu");
 		
 		labelTitulo.getStyleClass().add("tituloPrincipal");
-		
 		titulo = new Titulo(labelTitulo);
 		titulo.getStyleClass().add("boxTituloPrincipal");
 		
-		labelTituloDeNavegacao.setTranslateX(550);
-		labelTituloDeNavegacao.setMaxSize(320, 25);
+		labelTituloDeNavegacao.setTranslateX(570);
+		labelTituloDeNavegacao.setMaxSize(200, 25);
 		labelTituloDeNavegacao.getStyleClass().add("tituloNavegacao");
 		
-		labelLivro.setTranslateX(460);
-		labelLivro.setMaxSize(70, 25);
-		campoLivro.setTranslateX(550);
-		campoLivro.setMaxSize(270, 30);
+		labelCodigo.setTranslateX(450);
+		labelCodigo.setMaxSize(80, 25);
+		campoCodigo.setTranslateX(550);
+		campoCodigo.setMaxSize(270, 30);
 		
 		botaoCancelar.setTranslateX(450);
 		botaoCancelar.setMaxSize(110, 30);
 		botaoCancelar.getStyleClass().add("botaoDeConfirmacao");
-		botaoAvancar.setTranslateX(770);
-		botaoAvancar.setMaxSize(110, 30);
-		botaoAvancar.getStyleClass().add("botaoDeConfirmacao");
-		
+		botaoRemover.setTranslateX(770);
+		botaoRemover.setMaxSize(110, 30);
+		botaoRemover.getStyleClass().add("botaoDeConfirmacao");
+
 	}
 	
 	private void adicionarElementosNaTela() {
-		gridPaneEmprestimo.add(titulo, 0, 0);
-		gridPaneEmprestimo.add(labelTituloDeNavegacao, 0, 2);
-		gridPaneEmprestimo.add(labelLivro, 0, 4);
-		gridPaneEmprestimo.add(campoLivro, 0, 4);
-		gridPaneEmprestimo.add(botaoCancelar, 0, 6);
-		gridPaneEmprestimo.add(botaoAvancar, 0, 6);
+		gridPaneRemocaoDeLivro.add(titulo, 0, 0);
+		gridPaneRemocaoDeLivro.add(labelTituloDeNavegacao, 0, 2);
+		gridPaneRemocaoDeLivro.add(labelCodigo, 0, 4);
+		gridPaneRemocaoDeLivro.add(campoCodigo, 0, 4);
+		gridPaneRemocaoDeLivro.add(botaoCancelar, 0, 6);
+		gridPaneRemocaoDeLivro.add(botaoRemover, 0, 6);
 	}
 	
-	private void adicionarEventoBotaoAvancar() {
-		botaoAvancar.setOnAction(e -> {
+	private void adicionarEventoBotaoRemover() {
+		botaoRemover.setOnAction(e -> {
+			String codigo = campoCodigo.getText();
 			DAO.iniciarConexao();
-			Livro livro = DAO.consultarLivroPorTitulo(campoLivro.getText());
+			Livro livro = DAO.consultarLivroPorCodigo(codigo);
+			
 			if(livro != null) {
-				new TelaLivroEmprestimo(stage, livro);
+				if(DAO.excluirLivro(livro)) {
+					new JanelaDeConfirmacaoLivro("        Livro removido com sucesso!", stage);
+				}
 			}
 			else {
-				new JanelaDeExcecaoLivroEmprestimo("        Livro não cadastrado", stage);
+				new JanelaDeExcecaoLivro("            Livro não cadastrado!", stage);
 			}
 			DAO.fecharConexao();
 		});
@@ -112,13 +116,14 @@ public class TelaRealizacaoDeEmprestimo {
 	
 	private void adicionarEventoBotaoCancelar() {
 		botaoCancelar.setOnAction(e -> {
-			new TelaMenuEmprestimo(stage);
+			new TelaMenuLivro(stage);
 		});
 	}
 	
 	private void exibirCena() {
-		cenaEmprestimo = new Scene(gridPaneEmprestimo, 1300, 700);
-		cenaEmprestimo.getStylesheets().add(CSS);
-		stage.setScene(cenaEmprestimo);
+		cenaRemocaoDeLivro = new Scene(gridPaneRemocaoDeLivro, 1300, 700);
+		cenaRemocaoDeLivro.getStylesheets().add(CSS);
+		stage.setScene(cenaRemocaoDeLivro);
 	}
+	
 }

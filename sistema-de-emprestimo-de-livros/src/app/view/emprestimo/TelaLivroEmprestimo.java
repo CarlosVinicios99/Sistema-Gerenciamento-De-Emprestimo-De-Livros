@@ -1,6 +1,7 @@
-package app.view;
+package app.view.emprestimo;
 
 import app.model.entities.Livro;
+import app.view.Titulo;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;

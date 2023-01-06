@@ -102,15 +102,14 @@ public class TelaDeLogin {
 			String cpf = campoCpf.getText();
 			String senha = campoSenha.getText();
 			DAO.iniciarConexao();
-			boolean resultado = DAO.bibliotecarioExiste(cpf, senha);
 	
-			if(resultado) {
-				DAO.fecharConexao();
+			if(DAO.bibliotecarioExiste(cpf, senha)) {
 				new TelaMenuPrincipal(stage);
 			}
 			else {
-				DAO.fecharConexao();
+				new JanelaDeExcecaoLogin("     Bibliotecário não cadastrado!", stage);
 			}	
+			DAO.fecharConexao();
 		});
 	}
 	

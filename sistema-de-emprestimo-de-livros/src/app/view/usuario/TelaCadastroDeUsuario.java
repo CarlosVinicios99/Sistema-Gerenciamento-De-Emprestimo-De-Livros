@@ -1,7 +1,8 @@
-package app.view;
+package app.view.usuario;
 
 import app.model.entities.Usuario;
 import app.repositories.DAO;
+import app.view.Titulo;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;

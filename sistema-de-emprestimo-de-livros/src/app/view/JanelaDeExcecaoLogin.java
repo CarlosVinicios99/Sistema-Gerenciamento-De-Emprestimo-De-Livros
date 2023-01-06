@@ -2,9 +2,9 @@ package app.view;
 
 import javafx.stage.Stage;
 
-public class JanelaDeExcecaoLivro extends JanelaDeExcecao{
+public class JanelaDeExcecaoLogin extends JanelaDeExcecao{
 	
-	public JanelaDeExcecaoLivro(String mensagem, Stage proximoStage) {
+	public JanelaDeExcecaoLogin(String mensagem, Stage proximoStage) {
 		super(mensagem, proximoStage);
 		adicionarEventoBotaoOk();
 	}
@@ -13,7 +13,7 @@ public class JanelaDeExcecaoLivro extends JanelaDeExcecao{
 	public void adicionarEventoBotaoOk(){
 		botaoOk.setOnAction(e -> {
 			stageJanela.close();
-			new TelaMenuLivro(proximoStage);
+			new TelaDeLogin(proximoStage);
 		});
 	}
 	

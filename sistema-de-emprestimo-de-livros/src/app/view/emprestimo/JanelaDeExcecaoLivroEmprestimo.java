@@ -1,5 +1,6 @@
-package app.view;
+package app.view.emprestimo;
 
+import app.view.JanelaDeExcecao;
 import javafx.stage.Stage;
 
 public class JanelaDeExcecaoLivroEmprestimo extends JanelaDeExcecao {

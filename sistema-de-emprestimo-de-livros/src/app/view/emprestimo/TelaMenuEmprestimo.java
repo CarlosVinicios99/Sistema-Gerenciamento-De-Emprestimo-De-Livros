@@ -1,5 +1,7 @@
-package app.view;
+package app.view.emprestimo;
 
+import app.view.TelaMenuPrincipal;
+import app.view.Titulo;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -9,34 +11,34 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 
-public class TelaMenuUsuario {
+public class TelaMenuEmprestimo {
 	
 	private Stage stage = new Stage();
-	private GridPane gridPaneMenuUsuario = new GridPane();
-	private Scene cenaMenuUsuario;
+	private GridPane gridPaneMenuEmprestimo = new GridPane();
+	private Scene cenaMenuEmprestimo;
 	private Titulo titulo;
 	private String CSS = getClass().getResource("/app/view/estilo.css").toExternalForm();
 	
 	private Label labelTitulo = new Label("Universidade Federal Fluminense");
-	private Label labelTituloDeNavegacao = new Label("Usuários");
-	private Button botaoCadastrar = new Button("Cadastrar Usuário");
-	private Button botaoRemover = new Button("Remover Usuário");
+	private Label labelTituloDeNavegacao = new Label("Empréstimos");
+	private Button botaoEmprestimo = new Button("Realizar Empréstimo");
+	private Button botaoDevolucao = new Button("Realizar Devolução");
 	private Button botaoVoltar = new Button("Voltar");
 	
-	public TelaMenuUsuario(Stage stage) {
+	public TelaMenuEmprestimo(Stage stage) {
 		this.stage = stage;
 		criarGrid();
 		configurarElementosVisuais();
 		adicionarElementosNaTela();
-		adicionarEventoBotaoCadastrar();
-		adicionarEventoBotaoRemover();
+		adicionarEventoBotaoEmprestimo();
+		adicionarEventoBotaoDevolucao();
 		adicionarEventoBotaoVoltar();
 		exibirCena();
 	}
 	
 	private void criarGrid() {
-		gridPaneMenuUsuario.getColumnConstraints().add(criarColuna(100));
-		gridPaneMenuUsuario.getRowConstraints()
+		gridPaneMenuEmprestimo.getColumnConstraints().add(criarColuna(100));
+		gridPaneMenuEmprestimo.getRowConstraints()
 			.addAll(criarLinha(9), criarLinha(6), criarLinha(9), criarLinha(5), criarLinha(10), 
 				criarLinha(8), criarLinha(10), criarLinha(8));
 	}
@@ -58,25 +60,25 @@ public class TelaMenuUsuario {
 	private void configurarElementosVisuais(){
 		stage.setTitle("Empréstimos De Livros");
 		stage.setResizable(false);
-		gridPaneMenuUsuario.setAlignment(Pos.TOP_CENTER);
-		gridPaneMenuUsuario.getStyleClass().add("telasDeMenu");
+		gridPaneMenuEmprestimo.setAlignment(Pos.TOP_CENTER);
+		gridPaneMenuEmprestimo.getStyleClass().add("telasDeMenu");
 		
 		labelTitulo.getStyleClass().add("tituloPrincipal");
 		
 		titulo = new Titulo(labelTitulo);
 		titulo.getStyleClass().add("boxTituloPrincipal");
 		
-		labelTituloDeNavegacao.setTranslateX(580);
+		labelTituloDeNavegacao.setTranslateX(560);
 		labelTituloDeNavegacao.getStyleClass().add("tituloNavegacao");
 		labelTituloDeNavegacao.setMaxSize(210, 25);
 		
-		botaoCadastrar.setTranslateX(490);
-		botaoCadastrar.setMaxSize(300, 50);
-		botaoCadastrar.getStyleClass().add("botaoDeSubMenu");
+		botaoEmprestimo.setTranslateX(490);
+		botaoEmprestimo.setMaxSize(300, 50);
+		botaoEmprestimo.getStyleClass().add("botaoDeSubMenu");
 		
-		botaoRemover.setTranslateX(490);
-		botaoRemover.setMaxSize(300, 50);
-		botaoRemover.getStyleClass().add("botaoDeSubMenu");
+		botaoDevolucao.setTranslateX(490);
+		botaoDevolucao.setMaxSize(300, 50);
+		botaoDevolucao.getStyleClass().add("botaoDeSubMenu");
 		
 		botaoVoltar.setTranslateX(490);
 		botaoVoltar.setMaxSize(300, 50);
@@ -85,24 +87,23 @@ public class TelaMenuUsuario {
 	}
 	
 	private void adicionarElementosNaTela() {
-		gridPaneMenuUsuario.add(titulo, 0, 0);
-		gridPaneMenuUsuario.add(labelTituloDeNavegacao, 0, 2);
-		gridPaneMenuUsuario.add(botaoCadastrar, 0, 4);
-		gridPaneMenuUsuario.add(botaoRemover, 0, 6);
-		gridPaneMenuUsuario.add(botaoVoltar, 0, 8);
+		gridPaneMenuEmprestimo.add(titulo, 0, 0);
+		gridPaneMenuEmprestimo.add(labelTituloDeNavegacao, 0, 2);
+		gridPaneMenuEmprestimo.add(botaoEmprestimo, 0, 4);
+		gridPaneMenuEmprestimo.add(botaoDevolucao, 0, 6);
+		gridPaneMenuEmprestimo.add(botaoVoltar, 0, 8);
 	}
 	
-	private void adicionarEventoBotaoCadastrar() {
-		botaoCadastrar.setOnAction(e -> {
-			new TelaCadastroDeUsuario(stage);
+	private void adicionarEventoBotaoEmprestimo() {
+		botaoEmprestimo.setOnAction(e -> {
+			new TelaRealizacaoDeEmprestimo(stage);
 		});
 	}
 	
-	private void adicionarEventoBotaoRemover() {
-		botaoRemover.setOnAction(e -> {
-			new TelaRemocaoDeUsuario(stage);
+	private void adicionarEventoBotaoDevolucao() {
+		botaoDevolucao.setOnAction(e -> {
+			new TelaRealizacaoDeDevolucao(stage);
 		});
-		
 	}
 	
 	private void adicionarEventoBotaoVoltar() {
@@ -112,9 +113,9 @@ public class TelaMenuUsuario {
 	}
 	
 	private void exibirCena() {
-		cenaMenuUsuario = new Scene(gridPaneMenuUsuario, 1300, 700);
-		cenaMenuUsuario.getStylesheets().add(CSS);
-		stage.setScene(cenaMenuUsuario);
+		cenaMenuEmprestimo = new Scene(gridPaneMenuEmprestimo, 1300, 700);
+		cenaMenuEmprestimo.getStylesheets().add(CSS);
+		stage.setScene(cenaMenuEmprestimo);
 	}
-
+	
 }

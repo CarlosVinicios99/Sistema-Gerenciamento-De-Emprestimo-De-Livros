@@ -1,5 +1,7 @@
-package app.view;
+package app.view.usuario;
 
+import app.view.TelaMenuPrincipal;
+import app.view.Titulo;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -9,21 +11,21 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 
-public class TelaMenuLivro {
+public class TelaMenuUsuario {
 	
 	private Stage stage = new Stage();
-	private GridPane gridPaneMenuLivro = new GridPane();
-	private Scene cenaMenuLivro;
+	private GridPane gridPaneMenuUsuario = new GridPane();
+	private Scene cenaMenuUsuario;
 	private Titulo titulo;
 	private String CSS = getClass().getResource("/app/view/estilo.css").toExternalForm();
 	
 	private Label labelTitulo = new Label("Universidade Federal Fluminense");
-	private Label labelTituloDeNavegacao = new Label("Livros");
-	private Button botaoCadastrar = new Button("Cadastrar Livro");
-	private Button botaoRemover = new Button("Remover Livro");
+	private Label labelTituloDeNavegacao = new Label("Usuários");
+	private Button botaoCadastrar = new Button("Cadastrar Usuário");
+	private Button botaoRemover = new Button("Remover Usuário");
 	private Button botaoVoltar = new Button("Voltar");
 	
-	public TelaMenuLivro(Stage stage) {
+	public TelaMenuUsuario(Stage stage) {
 		this.stage = stage;
 		criarGrid();
 		configurarElementosVisuais();
@@ -35,8 +37,8 @@ public class TelaMenuLivro {
 	}
 	
 	private void criarGrid() {
-		gridPaneMenuLivro.getColumnConstraints().add(criarColuna(100));
-		gridPaneMenuLivro.getRowConstraints()
+		gridPaneMenuUsuario.getColumnConstraints().add(criarColuna(100));
+		gridPaneMenuUsuario.getRowConstraints()
 			.addAll(criarLinha(9), criarLinha(6), criarLinha(9), criarLinha(5), criarLinha(10), 
 				criarLinha(8), criarLinha(10), criarLinha(8));
 	}
@@ -58,15 +60,15 @@ public class TelaMenuLivro {
 	private void configurarElementosVisuais(){
 		stage.setTitle("Empréstimos De Livros");
 		stage.setResizable(false);
-		gridPaneMenuLivro.setAlignment(Pos.TOP_CENTER);
-		gridPaneMenuLivro.getStyleClass().add("telasDeMenu");
+		gridPaneMenuUsuario.setAlignment(Pos.TOP_CENTER);
+		gridPaneMenuUsuario.getStyleClass().add("telasDeMenu");
 		
 		labelTitulo.getStyleClass().add("tituloPrincipal");
 		
 		titulo = new Titulo(labelTitulo);
 		titulo.getStyleClass().add("boxTituloPrincipal");
 		
-		labelTituloDeNavegacao.setTranslateX(590);
+		labelTituloDeNavegacao.setTranslateX(580);
 		labelTituloDeNavegacao.getStyleClass().add("tituloNavegacao");
 		labelTituloDeNavegacao.setMaxSize(210, 25);
 		
@@ -85,23 +87,24 @@ public class TelaMenuLivro {
 	}
 	
 	private void adicionarElementosNaTela() {
-		gridPaneMenuLivro.add(titulo, 0, 0);
-		gridPaneMenuLivro.add(labelTituloDeNavegacao, 0, 2);
-		gridPaneMenuLivro.add(botaoCadastrar, 0, 4);
-		gridPaneMenuLivro.add(botaoRemover, 0, 6);
-		gridPaneMenuLivro.add(botaoVoltar, 0, 8);
+		gridPaneMenuUsuario.add(titulo, 0, 0);
+		gridPaneMenuUsuario.add(labelTituloDeNavegacao, 0, 2);
+		gridPaneMenuUsuario.add(botaoCadastrar, 0, 4);
+		gridPaneMenuUsuario.add(botaoRemover, 0, 6);
+		gridPaneMenuUsuario.add(botaoVoltar, 0, 8);
 	}
 	
 	private void adicionarEventoBotaoCadastrar() {
 		botaoCadastrar.setOnAction(e -> {
-			new TelaCadastroDeLivro(stage);
+			new TelaCadastroDeUsuario(stage);
 		});
 	}
 	
 	private void adicionarEventoBotaoRemover() {
 		botaoRemover.setOnAction(e -> {
-			new TelaRemocaoDeLivro(stage);
+			new TelaRemocaoDeUsuario(stage);
 		});
+		
 	}
 	
 	private void adicionarEventoBotaoVoltar() {
@@ -111,9 +114,9 @@ public class TelaMenuLivro {
 	}
 	
 	private void exibirCena() {
-		cenaMenuLivro = new Scene(gridPaneMenuLivro, 1300, 700);
-		cenaMenuLivro.getStylesheets().add(CSS);
-		stage.setScene(cenaMenuLivro);
+		cenaMenuUsuario = new Scene(gridPaneMenuUsuario, 1300, 700);
+		cenaMenuUsuario.getStylesheets().add(CSS);
+		stage.setScene(cenaMenuUsuario);
 	}
-	
+
 }

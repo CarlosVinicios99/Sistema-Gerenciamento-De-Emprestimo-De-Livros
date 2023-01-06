@@ -1,7 +1,8 @@
-package app.view;
+package app.view.livro;
 
 import app.model.entities.Livro;
 import app.repositories.DAO;
+import app.view.Titulo;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;

@@ -1,4 +1,4 @@
-package app.view;
+package app.view.emprestimo;
 
 import javafx.stage.Stage;
 
