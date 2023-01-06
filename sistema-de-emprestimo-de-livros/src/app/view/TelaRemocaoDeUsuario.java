@@ -113,10 +113,10 @@ public class TelaRemocaoDeUsuario {
 			Usuario usuario = DAO.consultarUsuario(cpf, senha);
 			
 			if(DAO.excluirUsuario(usuario)) {
-				new JanelaDeConfirmacaoUsuario("Usuario removido com sucesso", stage);
+				new JanelaDeConfirmacaoUsuario("    Usuário removido com sucesso!", stage);
 			}
 			else {
-				new JanelaDeExcecaoUsuario("Usuario nao encontrado, verifique os dados e tente novamente", stage);
+				new JanelaDeExcecaoUsuario("        Usuário não cadastrado!", stage);
 			}
 	
 			DAO.fecharConexao();

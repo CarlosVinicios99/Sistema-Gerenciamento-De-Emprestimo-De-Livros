@@ -23,7 +23,7 @@ public class TelaRemocaoDeLivro {
 	
 	private Label labelTituloDeNavegacao = new Label("Remover Livro");
 	private TextField campoCodigo = new TextField();;
-	private Label labelCodigo = new Label("Codigo: ");
+	private Label labelCodigo = new Label("Código: ");
 	private Button botaoRemover = new Button("Remover");
 	private Button botaoCancelar = new Button("Cancelar");
 	
@@ -102,12 +102,14 @@ public class TelaRemocaoDeLivro {
 			Livro livro = DAO.consultarLivroPorCodigo(codigo);
 			
 			if(livro != null) {
-				DAO.excluirLivro(livro);
+				if(DAO.excluirLivro(livro)) {
+					new JanelaDeConfirmacaoLivro("        Livro removido com sucesso!", stage);
+				}
 			}
-			
+			else {
+				new JanelaDeExcecaoLivro("            Livro não cadastrado!", stage);
+			}
 			DAO.fecharConexao();
-			new TelaMenuLivro(stage);
-			
 		});
 	}
 	

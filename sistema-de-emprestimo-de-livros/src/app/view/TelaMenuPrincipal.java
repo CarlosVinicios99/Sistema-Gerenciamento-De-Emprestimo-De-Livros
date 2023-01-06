@@ -18,7 +18,7 @@ public class TelaMenuPrincipal {
 	private String CSS = getClass().getResource("/app/view/estilo.css").toExternalForm();
 	private Label labelTitulo = new Label("Universidade Federal Fluminense");
 	
-	private Label labelTituloDeNavegacao = new Label("Bem-Vindo(a)!");
+	private Label labelTituloDeNavegacao = new Label("Menu Principal");
 	private Button botaoUsuarios = new Button("Usuários");
 	private Button botaoLivros = new Button("Livros");
 	private Button botaoEmprestimos = new Button("Empréstimos");

@@ -16,7 +16,9 @@ public class TelaMenuLivro {
 	private Scene cenaMenuLivro;
 	private Titulo titulo;
 	private String CSS = getClass().getResource("/app/view/estilo.css").toExternalForm();
+	
 	private Label labelTitulo = new Label("Universidade Federal Fluminense");
+	private Label labelTituloDeNavegacao = new Label("Livros");
 	private Button botaoCadastrar = new Button("Cadastrar Livro");
 	private Button botaoRemover = new Button("Remover Livro");
 	private Button botaoVoltar = new Button("Voltar");
@@ -35,7 +37,7 @@ public class TelaMenuLivro {
 	private void criarGrid() {
 		gridPaneMenuLivro.getColumnConstraints().add(criarColuna(100));
 		gridPaneMenuLivro.getRowConstraints()
-			.addAll(criarLinha(9), criarLinha(15), criarLinha(8), criarLinha(10), 
+			.addAll(criarLinha(9), criarLinha(6), criarLinha(9), criarLinha(5), criarLinha(10), 
 				criarLinha(8), criarLinha(10), criarLinha(8));
 	}
 	
@@ -64,6 +66,10 @@ public class TelaMenuLivro {
 		titulo = new Titulo(labelTitulo);
 		titulo.getStyleClass().add("boxTituloPrincipal");
 		
+		labelTituloDeNavegacao.setTranslateX(590);
+		labelTituloDeNavegacao.getStyleClass().add("tituloNavegacao");
+		labelTituloDeNavegacao.setMaxSize(210, 25);
+		
 		botaoCadastrar.setTranslateX(490);
 		botaoCadastrar.setMaxSize(300, 50);
 		botaoCadastrar.getStyleClass().add("botaoDeSubMenu");
@@ -80,9 +86,10 @@ public class TelaMenuLivro {
 	
 	private void adicionarElementosNaTela() {
 		gridPaneMenuLivro.add(titulo, 0, 0);
-		gridPaneMenuLivro.add(botaoCadastrar, 0, 2);
-		gridPaneMenuLivro.add(botaoRemover, 0, 4);
-		gridPaneMenuLivro.add(botaoVoltar, 0, 6);
+		gridPaneMenuLivro.add(labelTituloDeNavegacao, 0, 2);
+		gridPaneMenuLivro.add(botaoCadastrar, 0, 4);
+		gridPaneMenuLivro.add(botaoRemover, 0, 6);
+		gridPaneMenuLivro.add(botaoVoltar, 0, 8);
 	}
 	
 	private void adicionarEventoBotaoCadastrar() {

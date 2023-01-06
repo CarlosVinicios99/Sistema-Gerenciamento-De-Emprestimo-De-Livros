@@ -16,7 +16,9 @@ public class TelaMenuUsuario {
 	private Scene cenaMenuUsuario;
 	private Titulo titulo;
 	private String CSS = getClass().getResource("/app/view/estilo.css").toExternalForm();
+	
 	private Label labelTitulo = new Label("Universidade Federal Fluminense");
+	private Label labelTituloDeNavegacao = new Label("Usuários");
 	private Button botaoCadastrar = new Button("Cadastrar Usuário");
 	private Button botaoRemover = new Button("Remover Usuário");
 	private Button botaoVoltar = new Button("Voltar");
@@ -35,7 +37,7 @@ public class TelaMenuUsuario {
 	private void criarGrid() {
 		gridPaneMenuUsuario.getColumnConstraints().add(criarColuna(100));
 		gridPaneMenuUsuario.getRowConstraints()
-			.addAll(criarLinha(9), criarLinha(15), criarLinha(8), criarLinha(10), 
+			.addAll(criarLinha(9), criarLinha(6), criarLinha(9), criarLinha(5), criarLinha(10), 
 				criarLinha(8), criarLinha(10), criarLinha(8));
 	}
 	
@@ -64,6 +66,10 @@ public class TelaMenuUsuario {
 		titulo = new Titulo(labelTitulo);
 		titulo.getStyleClass().add("boxTituloPrincipal");
 		
+		labelTituloDeNavegacao.setTranslateX(580);
+		labelTituloDeNavegacao.getStyleClass().add("tituloNavegacao");
+		labelTituloDeNavegacao.setMaxSize(210, 25);
+		
 		botaoCadastrar.setTranslateX(490);
 		botaoCadastrar.setMaxSize(300, 50);
 		botaoCadastrar.getStyleClass().add("botaoDeSubMenu");
@@ -80,9 +86,10 @@ public class TelaMenuUsuario {
 	
 	private void adicionarElementosNaTela() {
 		gridPaneMenuUsuario.add(titulo, 0, 0);
-		gridPaneMenuUsuario.add(botaoCadastrar, 0, 2);
-		gridPaneMenuUsuario.add(botaoRemover, 0, 4);
-		gridPaneMenuUsuario.add(botaoVoltar, 0, 6);
+		gridPaneMenuUsuario.add(labelTituloDeNavegacao, 0, 2);
+		gridPaneMenuUsuario.add(botaoCadastrar, 0, 4);
+		gridPaneMenuUsuario.add(botaoRemover, 0, 6);
+		gridPaneMenuUsuario.add(botaoVoltar, 0, 8);
 	}
 	
 	private void adicionarEventoBotaoCadastrar() {

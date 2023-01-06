@@ -1,4 +1,4 @@
-package app.view;
+ package app.view;
 
 import app.model.entities.Livro;
 import app.repositories.DAO;
@@ -99,12 +99,12 @@ public class TelaRealizacaoDeDevolucao {
 	private void adicionarEventoBotaoConfirmar() {
 		botaoConfirmar.setOnAction(e -> {
 			DAO.iniciarConexao();
-			Livro livro = DAO.consultarLivroPorCodigo(labelCodigo.getText());
+			Livro livro = DAO.consultarLivroPorCodigo(campoCodigo.getText());
 			if(livro != null) {
 				new TelaUsuarioDevolucao(stage, livro);
 			}
 			else {
-				new JanelaDeExcecaoDevolucao("Livro nao encontrado", stage);
+				new JanelaDeExcecaoDevolucao("           Livro não encontrado!", stage);
 			}
 			DAO.fecharConexao();
 		});

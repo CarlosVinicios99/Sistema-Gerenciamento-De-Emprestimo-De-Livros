@@ -26,6 +26,10 @@
 	-fx-background-radius: 5px;
 }
 
+.botoesMenuPrincipal:hover{
+	-fx-background-color: #2a2879;
+}
+
 
 .botaoDeSubMenu{
 	-fx-font-size: 25px;

@@ -99,12 +99,12 @@ public class TelaRealizacaoDeEmprestimo {
 	private void adicionarEventoBotaoAvancar() {
 		botaoAvancar.setOnAction(e -> {
 			DAO.iniciarConexao();
-			Livro livro = DAO.consultarLivroPorTitulo(labelLivro.getText());
+			Livro livro = DAO.consultarLivroPorTitulo(campoLivro.getText());
 			if(livro != null) {
 				new TelaLivroEmprestimo(stage, livro);
 			}
 			else {
-				new JanelaDeExcecaoLivroEmprestimo("Livro nao cadastrado", stage);
+				new JanelaDeExcecaoLivroEmprestimo("        Livro não cadastrado", stage);
 			}
 			DAO.fecharConexao();
 		});

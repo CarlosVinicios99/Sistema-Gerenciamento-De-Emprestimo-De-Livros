@@ -18,7 +18,7 @@ public abstract class JanelaDeExcecao {
 	private GridPane gridPaneJanelaDeExcecao = new GridPane();
 	
 	private Label labelMensagem = new Label();
-	private Label simboloExcecao = new Label('\u274e' + "");
+	private Label simboloExcecao = new Label("X");
 	protected Button botaoOk = new Button("OK");
 
 	public JanelaDeExcecao(String mensagem, Stage stage) {
@@ -33,7 +33,7 @@ public abstract class JanelaDeExcecao {
 	private void criarGrid() {
 		gridPaneJanelaDeExcecao.getColumnConstraints().add(criarColuna(100));
 		gridPaneJanelaDeExcecao.getRowConstraints()
-			.addAll(criarLinha(5), criarLinha(30), criarLinha(1), criarLinha(6), criarLinha(13), criarLinha(6));
+			.addAll(criarLinha(5), criarLinha(30), criarLinha(1), criarLinha(6), criarLinha(15), criarLinha(6));
 	}
 	
 	private RowConstraints criarLinha(double heigth) {
@@ -57,11 +57,11 @@ public abstract class JanelaDeExcecao {
 		gridPaneJanelaDeExcecao.getStyleClass().add("janelaDeExcecao");
 	
 		
-		labelMensagem.setTranslateX(100);
-		simboloExcecao.setTranslateX(245);
+		labelMensagem.setTranslateX(50);
+		simboloExcecao.setTranslateX(195);
 		simboloExcecao.getStyleClass().add("simboloExcecao");
 		
-		botaoOk.setTranslateX(215);
+		botaoOk.setTranslateX(165);
 		botaoOk.setMaxSize(70, 30);
 		botaoOk.getStyleClass().add("botaoDeConfirmacao");
 	}
@@ -75,7 +75,7 @@ public abstract class JanelaDeExcecao {
 	public abstract void adicionarEventoBotaoOk();
 	
 	private void exibirCena() {
-		cenaExcecao = new Scene(gridPaneJanelaDeExcecao, 500, 250);
+		cenaExcecao = new Scene(gridPaneJanelaDeExcecao, 400, 200);
 		cenaExcecao.getStylesheets().add(CSS);
 		stageJanela.setScene(cenaExcecao);
 		stageJanela.show();

@@ -1,6 +1,5 @@
 package app.view;
 
-import app.model.entities.Emprestimo;
 import app.model.entities.Livro;
 import app.model.entities.Usuario;
 import app.repositories.DAO;
@@ -114,14 +113,14 @@ public class TelaUsuarioDevolucao {
 			Usuario usuario = DAO.consultarUsuario(campoCpf.getText(), campoSenha.getText());
 			if(usuario != null) {
 				if(DAO.excluirEmprestimo(usuario.getId(), livro)) {
-					new JanelaDeConfirmacaoDevolucao("Devolucao registrada!", stage);
+					new JanelaDeConfirmacaoDevolucao("           Devolução registrada!", stage);
 				}
 				else {
-					new JanelaDeExcecaoDevolucao("Devolucao nao registrada!", stage);
+					new JanelaDeExcecaoDevolucao("         Devolução não registrada!", stage);
 				}
 			}
 			else {
-				new JanelaDeExcecaoDevolucao("Usuario nao cadastrado!", stage);
+				new JanelaDeExcecaoDevolucao("        Usuário não cadastrado!", stage);
 			}
 			DAO.fecharConexao();
 		});

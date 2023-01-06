@@ -144,10 +144,10 @@ public class TelaCadastroDeLivro {
 			DAO.iniciarConexao();
 			
 			if(DAO.inserirLivro(livro)) {
-				new JanelaDeConfirmacaoLivro("Livro cadastrado com sucesso", stage);
+				new JanelaDeConfirmacaoLivro("     Livro cadastrado com sucesso!", stage);
 			}
 			else {
-				new JanelaDeExcecaoLivro("Livro nao cadastrado, Tente novamente", stage);
+				new JanelaDeExcecaoLivro("        Livro não cadastrado!", stage);
 			}
 			
 			DAO.fecharConexao();

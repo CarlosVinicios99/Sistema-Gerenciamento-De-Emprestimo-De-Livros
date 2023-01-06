@@ -33,7 +33,7 @@ public abstract class JanelaDeConfirmacao {
 	private void criarGrid() {
 		gridPaneJanelaDeConfirmacao.getColumnConstraints().add(criarColuna(100));
 		gridPaneJanelaDeConfirmacao.getRowConstraints()
-			.addAll(criarLinha(5), criarLinha(30), criarLinha(1), criarLinha(6), criarLinha(13), criarLinha(6));
+			.addAll(criarLinha(5), criarLinha(30), criarLinha(1), criarLinha(6), criarLinha(15), criarLinha(6));
 	}
 	
 	private RowConstraints criarLinha(double heigth) {
@@ -57,11 +57,11 @@ public abstract class JanelaDeConfirmacao {
 		gridPaneJanelaDeConfirmacao.getStyleClass().add("janelaDeConfirmacao");
 	
 		
-		labelMensagem.setTranslateX(100);
-		simboloConfirmacao.setTranslateX(245);
+		labelMensagem.setTranslateX(50);
+		simboloConfirmacao.setTranslateX(195);
 		simboloConfirmacao.getStyleClass().add("simboloConfirmacao");
 		
-		botaoOk.setTranslateX(215);
+		botaoOk.setTranslateX(165);
 		botaoOk.setMaxSize(70, 30);
 		botaoOk.getStyleClass().add("botaoDeConfirmacao");
 	}
@@ -75,7 +75,7 @@ public abstract class JanelaDeConfirmacao {
 	public abstract void adicionarEventoBotaoOk();
 	
 	private void exibirCena() {
-		cenaConfirmacao = new Scene(gridPaneJanelaDeConfirmacao, 500, 250);
+		cenaConfirmacao = new Scene(gridPaneJanelaDeConfirmacao, 400, 200);
 		cenaConfirmacao.getStylesheets().add(CSS);
 		stageJanela.setScene(cenaConfirmacao);
 		stageJanela.show();

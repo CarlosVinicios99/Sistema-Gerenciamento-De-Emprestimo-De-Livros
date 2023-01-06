@@ -81,23 +81,23 @@ public class TelaLivroEmprestimo {
 		
 		labelTituloLivro.setText(labelTituloLivro.getText() + livro.getTitulo());
 		labelTituloLivro.setTranslateX(450);
-		labelTituloLivro.setMaxSize(200, 25);
+		labelTituloLivro.setMaxSize(300, 25);
 		
 		labelAutor.setText(labelAutor.getText() + livro.getAutor());
 		labelAutor.setTranslateX(450);
-		labelAutor.setMaxSize(200, 25);
+		labelAutor.setMaxSize(300, 25);
 		
 		labelDescricao.setText(labelDescricao.getText() + livro.getDescricao());
 		labelDescricao.setTranslateX(450);
-		labelDescricao.setMaxSize(200, 25);
+		labelDescricao.setMaxSize(300, 25);
 		
-		labelCodigo.setText(labelAutor.getText() + livro.getCodigo());
+		labelCodigo.setText(labelCodigo.getText() + livro.getCodigo());
 		labelCodigo.setTranslateX(450);
-		labelCodigo.setMaxSize(200, 25);
+		labelCodigo.setMaxSize(300, 25);
 		
-		labelProprietario.setText(labelAutor.getText() + livro.getProprietario());
+		labelProprietario.setText(labelProprietario.getText() + livro.getProprietario());
 		labelProprietario.setTranslateX(450);
-		labelProprietario.setMaxSize(200, 25);
+		labelProprietario.setMaxSize(300, 25);
 		
 		botaoCancelar.setTranslateX(450);
 		botaoCancelar.setMaxSize(110, 30);

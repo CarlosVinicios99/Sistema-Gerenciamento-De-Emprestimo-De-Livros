@@ -145,10 +145,10 @@ public class TelaCadastroDeUsuario {
 			DAO.iniciarConexao();
 			
 			if(DAO.inserirUsuario(usuario)) {
-				new JanelaDeConfirmacaoUsuario("Usuario cadastrado com sucesso!", stage);
+				new JanelaDeConfirmacaoUsuario("   Usuário cadastrado com sucesso!", stage);
 			}
 			else {
-				new JanelaDeExcecaoUsuario("Usuario nao cadastrado, tente novamente!", stage);
+				new JanelaDeExcecaoUsuario("        Usuário não cadastrado", stage);
 			}
 			
 			DAO.fecharConexao();

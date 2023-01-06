@@ -30,7 +30,7 @@ public class TelaUsuarioEmprestimo {
 	private PasswordField campoSenha = new PasswordField();
 	private Label labelCpf = new Label("CPF: ");
 	private Label labelSenha = new Label("Senha: ");
-	private Button botaoConfirmar = new Button("Remover");
+	private Button botaoConfirmar = new Button("Confirmar");
 	private Button botaoCancelar = new Button("Cancelar");
 	
 	public TelaUsuarioEmprestimo(Stage stage, Livro livro) {
@@ -116,14 +116,14 @@ public class TelaUsuarioEmprestimo {
 			if(usuario != null) {
 				Emprestimo emprestimo = new Emprestimo(livro);
 				if(DAO.inserirEmprestimo(emprestimo, usuario.getId())) {
-					new JanelaDeConfirmacaoEmprestimo("Emprestimo registrado!", stage);
+					new JanelaDeConfirmacaoEmprestimo("      Empréstimo registrado!", stage);
 				}
 				else {
-					new JanelaDeExcecaoEmprestimo("Emprestimo nao registrado", stage);
+					new JanelaDeExcecaoEmprestimo("    Empréstimo não registrado!", stage);
 				}
 			}
 			else {
-				new JanelaDeExcecaoUsuarioEmprestimo("Usuario nao cadastrado!", stage, livro);
+				new JanelaDeExcecaoUsuarioEmprestimo("        Usuário não cadastrado!", stage, livro);
 			}
 			DAO.fecharConexao();
 		});

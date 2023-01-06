@@ -16,7 +16,9 @@ public class TelaMenuEmprestimo {
 	private Scene cenaMenuEmprestimo;
 	private Titulo titulo;
 	private String CSS = getClass().getResource("/app/view/estilo.css").toExternalForm();
+	
 	private Label labelTitulo = new Label("Universidade Federal Fluminense");
+	private Label labelTituloDeNavegacao = new Label("Empréstimos");
 	private Button botaoEmprestimo = new Button("Realizar Empréstimo");
 	private Button botaoDevolucao = new Button("Realizar Devolução");
 	private Button botaoVoltar = new Button("Voltar");
@@ -35,7 +37,7 @@ public class TelaMenuEmprestimo {
 	private void criarGrid() {
 		gridPaneMenuEmprestimo.getColumnConstraints().add(criarColuna(100));
 		gridPaneMenuEmprestimo.getRowConstraints()
-			.addAll(criarLinha(9), criarLinha(15), criarLinha(8), criarLinha(10), 
+			.addAll(criarLinha(9), criarLinha(6), criarLinha(9), criarLinha(5), criarLinha(10), 
 				criarLinha(8), criarLinha(10), criarLinha(8));
 	}
 	
@@ -64,6 +66,10 @@ public class TelaMenuEmprestimo {
 		titulo = new Titulo(labelTitulo);
 		titulo.getStyleClass().add("boxTituloPrincipal");
 		
+		labelTituloDeNavegacao.setTranslateX(560);
+		labelTituloDeNavegacao.getStyleClass().add("tituloNavegacao");
+		labelTituloDeNavegacao.setMaxSize(210, 25);
+		
 		botaoEmprestimo.setTranslateX(490);
 		botaoEmprestimo.setMaxSize(300, 50);
 		botaoEmprestimo.getStyleClass().add("botaoDeSubMenu");
@@ -80,9 +86,10 @@ public class TelaMenuEmprestimo {
 	
 	private void adicionarElementosNaTela() {
 		gridPaneMenuEmprestimo.add(titulo, 0, 0);
-		gridPaneMenuEmprestimo.add(botaoEmprestimo, 0, 2);
-		gridPaneMenuEmprestimo.add(botaoDevolucao, 0, 4);
-		gridPaneMenuEmprestimo.add(botaoVoltar, 0, 6);
+		gridPaneMenuEmprestimo.add(labelTituloDeNavegacao, 0, 2);
+		gridPaneMenuEmprestimo.add(botaoEmprestimo, 0, 4);
+		gridPaneMenuEmprestimo.add(botaoDevolucao, 0, 6);
+		gridPaneMenuEmprestimo.add(botaoVoltar, 0, 8);
 	}
 	
 	private void adicionarEventoBotaoEmprestimo() {

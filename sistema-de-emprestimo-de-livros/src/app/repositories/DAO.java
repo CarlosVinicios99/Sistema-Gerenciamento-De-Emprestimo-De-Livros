@@ -52,7 +52,8 @@ public class DAO {
 				preparedStatement.setString(3, usuario.getEmail());
 				preparedStatement.setString(4, usuario.getSenha());
 				preparedStatement.setString(5, usuario.getCpf());
-				return preparedStatement.execute();
+				preparedStatement.execute();
+				return true;
 			}
 			
 			catch(SQLException e) {
@@ -77,7 +78,8 @@ public class DAO {
 			preparedStatement.setString(4, livro.getAutor());
 			preparedStatement.setString(5, livro.getProprietario());
 			preparedStatement.setBoolean(6, livro.getDisponibilidade());
-			return preparedStatement.execute();
+			preparedStatement.execute();
+			return true;
 		}
 		
 		catch(SQLException e) {
@@ -391,6 +393,10 @@ public class DAO {
 	//Metodos de exclusao------------------------------------------------------------------------------------------
 	
 	public static boolean excluirUsuario(Usuario usuario) {
+		if(usuario == null) {
+			return false;
+		}
+		
 		if(usuario.getEmprestimos().isEmpty()) {
 			String SQL =
 				"""
@@ -400,7 +406,8 @@ public class DAO {
 			try {
 				preparedStatement = conexao.prepareStatement(SQL);
 				preparedStatement.setInt(1, usuario.getId());
-				return preparedStatement.execute();
+				preparedStatement.execute();
+				return true;
 			}
 			catch(SQLException e) {
 				System.out.println(e.getMessage());
