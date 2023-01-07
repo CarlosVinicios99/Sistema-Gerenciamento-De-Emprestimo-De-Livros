@@ -76,7 +76,7 @@
 
 ### Remover Usuário
 <p>
-   <img src = "https://github.com/CarlosVinicios99/Sistema-Gerenciamento-De-Emprestimo-De-Livros/blob/main/imagens/telaRemoverUsuario.jpg?raw=true" alt = "Remover Usuário">
+   <img src = "https://github.com/CarlosVinicios99/Sistema-Gerenciamento-De-Emprestimo-De-Livros/blob/main/imagens/image.png?raw=true" alt = "Remover Usuário">
 </p>
 <hr>
 <br>
