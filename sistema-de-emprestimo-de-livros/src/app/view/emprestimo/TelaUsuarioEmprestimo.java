@@ -117,10 +117,10 @@ public class TelaUsuarioEmprestimo {
 			if(usuario != null) {
 				Emprestimo emprestimo = new Emprestimo(livro);
 				if(DAO.inserirEmprestimo(emprestimo, usuario.getId())) {
-					new JanelaDeConfirmacaoEmprestimo("      Empréstimo registrado!", stage);
+					new JanelaDeConfirmacaoEmprestimo("         Empréstimo registrado!", stage);
 				}
 				else {
-					new JanelaDeExcecaoEmprestimo("    Empréstimo não registrado!", stage);
+					new JanelaDeExcecaoEmprestimo("      Empréstimo não registrado!", stage);
 				}
 			}
 			else {

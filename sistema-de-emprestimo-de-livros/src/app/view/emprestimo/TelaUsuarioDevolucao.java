@@ -117,11 +117,11 @@ public class TelaUsuarioDevolucao {
 					new JanelaDeConfirmacaoDevolucao("           Devolução registrada!", stage);
 				}
 				else {
-					new JanelaDeExcecaoDevolucao("         Devolução não registrada!", stage);
+					new JanelaDeExcecaoDevolucao("           Devolução não registrada!", stage);
 				}
 			}
 			else {
-				new JanelaDeExcecaoDevolucao("        Usuário não cadastrado!", stage);
+				new JanelaDeExcecaoDevolucao("         Usuário não cadastrado!", stage);
 			}
 			DAO.fecharConexao();
 		});
