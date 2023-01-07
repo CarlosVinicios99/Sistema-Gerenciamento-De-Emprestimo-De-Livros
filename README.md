@@ -91,13 +91,13 @@
 </p>
 <hr>
 
-### Cadastrar Livros
+### Cadastrar Livro
 <p>
    <img src = "https://github.com/CarlosVinicios99/Sistema-Gerenciamento-De-Emprestimo-De-Livros/blob/main/imagens/telaCadastroLivro.jpg?raw=true" alt = "Cadastro De Livros">
 </p>
 <hr>
 
-### Remover Livros
+### Remover Livro
 <p>
    <img src = "https://github.com/CarlosVinicios99/Sistema-Gerenciamento-De-Emprestimo-De-Livros/blob/main/imagens/TelaRemoverLivro.jpg?raw=true" alt = "Remover Livros">
 </p>
@@ -127,8 +127,63 @@
   Após a indicação do livro aparece uma tela de confirmação com os dados do livro. 
 </p>
 <p>
-   <img src = "https://github.com/CarlosVinicios99/Sistema-Gerenciamento-De-Emprestimo-De-Livros/blob/main/imagens/telaConfirmarLivroEmprestimo.jpg?raw=true" alt = "Realizar Confirmar Livro">
+   <img src = "https://github.com/CarlosVinicios99/Sistema-Gerenciamento-De-Emprestimo-De-Livros/blob/main/imagens/telaConfirmarLivroEmprestimo.jpg?raw=true" alt = "Confirmar Livro">
 </p>
 <hr>
 
-## Confirmar Usuário
+### Confirmar Usuário
+<p>
+  Após a etapa anterior deve ser indicado a qual usuário o livro será emprestado.
+</p>
+<p>
+   <img src = "https://github.com/CarlosVinicios99/Sistema-Gerenciamento-De-Emprestimo-De-Livros/blob/main/imagens/telaConfirmarUsuario.jpg?raw=true" alt = "Confirmar Livro">
+</p>
+<hr>
+<br>
+
+## Realizar Devolução
+<p>
+  Para realizar a devolução deve ser inserido o código do livro a ser devolvido.
+</p>
+<p>
+   <img src = "https://github.com/CarlosVinicios99/Sistema-Gerenciamento-De-Emprestimo-De-Livros/blob/main/imagens/telaConfirmarLivroDevolucao.jpg?raw=true" alt = "Indicar Livro">
+</p>
+<hr>
+
+### Confirmar Usuário
+<p>
+  Para realizar a devolução deve ser indicado qual usuário está devolvolvendo o livro.
+</p>
+<p>
+   <img src = "https://github.com/CarlosVinicios99/Sistema-Gerenciamento-De-Emprestimo-De-Livros/blob/main/imagens/telaConfirmarUsuario.jpg?raw=true" alt = "Confirmar Usuario">
+</p>
+<hr>
+<br>
+
+## Mensagem De Sucesso
+<p>
+  Ao fim de cada operação bem sucedida é exibida uma mensagem na tela indicando o sucesso da operação.
+</p>
+<p>
+   <img src = "https://github.com/CarlosVinicios99/Sistema-Gerenciamento-De-Emprestimo-De-Livros/blob/main/imagens/janelaDeConfirmacao.jpg?raw=true" alt = "Mensagem De Sucesso">
+</p>
+<hr>
+<br>
+
+## Mensagem De Exceção
+<p>
+  Se uma operação for mal sucedida é exibida uma mensagem na tela indicando o erro na operação.
+</p>
+<p>
+   <img src = "https://github.com/CarlosVinicios99/Sistema-Gerenciamento-De-Emprestimo-De-Livros/blob/main/imagens/janelaDeExcecao.jpg?raw=true" alt = "Mensagem De Exceção">
+</p>
+<hr>
+<br>
+
+## Modelo E/R Implementado para o Banco De Dados Do Sistema
+<p>
+   <img src = "https://github.com/CarlosVinicios99/Sistema-Gerenciamento-De-Emprestimo-De-Livros/blob/main/banco-de-dados/modelagem/banco_de_dados_do_sistema.png?raw=true" alt = "Modelo E/R Do Banco De Dados do Sistema">
+</p>
+<hr>
+<br>
+
